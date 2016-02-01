@@ -57,6 +57,7 @@ public class Person
     public Person()
     {
         this.id = counter++;
+        this.maxFloor = Config.maxFloor;
     }
 
     public int getId()

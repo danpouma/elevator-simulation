@@ -1,42 +1,10 @@
 package elevator;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author dpoumakis
  */
 
-/*
-Notes from class for developing this person object...
-
-class Person //data class
-  // Properties
-  private int id; //track them
-  private int startFloor;
-  private int stopFloor; // can’t be same as startFloor
-  private int time; // don’t care about this yet
-  // make sure stop/start floor are less than maxFloor
-  private int maxFloor = 10; // random for now until we have more files down the road
-  private bool goingUp; // Determine by public interface
-  private bool goingDown;  // Determine by public interface  
-  //class property
-  private static int counter = 0;
-
-  Person()
-  {
-    id = counter++;
-  }
-
-  secondary that will set start, stop and time
-
-  set and gets for all of them except for id
-
-*/
 public class Person
 {
     private int id;

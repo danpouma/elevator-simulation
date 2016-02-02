@@ -11,6 +11,7 @@ public class ElevatorButton
     
     public ElevatorButton()
     {
+        this.label = "";
         this.isOn = false;
     }
     

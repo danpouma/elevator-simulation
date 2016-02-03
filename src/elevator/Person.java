@@ -24,8 +24,11 @@ public class Person
 
     public Person()
     {
+        // is this id working correctly
         this.id = counter++;
         this.maxFloor = Config.maxFloor;
+        this.goingDown = false;
+        this.goingUp = false;
     }
 
     public int getId()

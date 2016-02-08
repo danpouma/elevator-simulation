@@ -1,8 +1,11 @@
 package elevator;
 
+import elevator.ElevatorButton;
+
 /**
  *
  * @author dpoumakis
+ * @date 2/8/2016
  */
 public class ElevatorButtonTest
 {

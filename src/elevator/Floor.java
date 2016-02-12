@@ -1,8 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+floor
+
+upQ //queue class
+downQ //queue class
+upButton //ebutton class
+downButton //ebutton class
+
+void addPerson(Person)
+Person removePerson(boolean direction)
+boolean isUpEmpty()
+boolean isDownEmpty()
+boolean isUpOn()
+boolean isDownOn()
+
+*/
 package elevator;
 
 /**

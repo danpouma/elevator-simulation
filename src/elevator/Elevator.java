@@ -94,4 +94,44 @@ public class Elevator
         
         return isFull;
     }
+    
+    int getCapacity()
+    {
+        return this.capacity;
+    }
+    
+    void getCapacity(int capacity)
+    {
+        this.capacity = capacity;
+    }
+    
+    Person getPerson(int index)
+    {
+        // best way to do this? may be an easier way
+        return this.people.get(index);
+    }
+    
+    Person[] getPeopleByStopFloor(int floor)
+    {
+        // Maybe make this stuff a seperate function
+        int numberOfPeople = 0;
+        for (int person = 0; person < people.size(); person++)
+        {
+            if (people.get(person).getStopFloor() == floor)
+            {
+                numberOfPeople++;
+            }
+        }
+        // figure out how to get number of people
+        Person[] peopleOnFloor = new Person[numberOfPeople];
+        
+        //this isnt getting accurate people... work to fix this later...
+        for (int person = 0; person < numberOfPeople; person++)
+        {
+            peopleOnFloor[person] = this.people.get(person);
+        }
+        
+        // doesnt work correct so return null instead of peopleOnFloor
+        return null;
+    }
 }

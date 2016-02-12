@@ -6,18 +6,6 @@ elevator
 -Person removePerson(int floor) //what if none is on floor? have method handle a null.
 -boolean isFull()
 -boolean isOn(int floor)
-
-### make sure you functions can handle errors. Russ was very specific about different cases.
-###asserstions..something you can enable and disable for tests
-***********************
-Building...
-{
-FloorArray -> Floor -> (upQueue, downQueue, upButton, downButton)
-
-Elevator -> Person(s) an array
-	     -> Button(s) an array
-}
-
 */
 package elevator;
 
@@ -40,15 +28,27 @@ public class Elevator
     
     public Elevator()
     {
-        // Set capacity to 15 for now
-        // might set via config file?
-        this.capacity = 15;
+        // Default gets capacity from config file
+        this.capacity = Config.elevatorCapacity;
         
         
         this.people = new LinkedList<>();
         this.buttons = new LinkedList<>();
         
         // Initialize the buttons...
+        for (int i = 1; i <= Config.maxFloor; i++)
+        {
+            buttons.add(new ElevatorButton(i + ""));
+        }
+    }
+    
+    public Elevator(int capacity)
+    {
+        this.capacity = capacity;
+        
+        this.people = new LinkedList<>();
+        this.buttons = new LinkedList<>();
+        
         for (int i = 1; i <= Config.maxFloor; i++)
         {
             buttons.add(new ElevatorButton(i + ""));

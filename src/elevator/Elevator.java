@@ -31,7 +31,6 @@ public class Elevator
         // Default gets capacity from config file
         this.capacity = Config.elevatorCapacity;
         
-        
         this.people = new LinkedList<>();
         this.buttons = new LinkedList<>();
         

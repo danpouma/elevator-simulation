@@ -22,5 +22,5 @@ package elevator;
  */
 public class Floor
 {
-    
+   // Queue 
 }

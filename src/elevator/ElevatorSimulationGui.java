@@ -37,7 +37,7 @@ public class ElevatorSimulationGui {
    }
 
    private void prepareGUI(){
-      mainFrame = new Frame("Java AWT Examples");
+      mainFrame = new Frame("Elevator Simulation!");
       mainFrame.setSize(400,400);
       mainFrame.setLayout(new GridLayout(3, 1));
       mainFrame.addWindowListener(new WindowAdapter() {
@@ -45,6 +45,7 @@ public class ElevatorSimulationGui {
             System.exit(0);
          }        
       });    
+      // Make this a text field?
       headerLabel = new Label();
       headerLabel.setAlignment(Label.CENTER);
       statusLabel = new Label();        
@@ -53,7 +54,7 @@ public class ElevatorSimulationGui {
    
       msglabel = new Label();
       msglabel.setAlignment(Label.CENTER);
-      msglabel.setText("Welcome to TutorialsPoint AWT Tutorial.");
+      msglabel.setText("This frame will show the simulation.");
 
       controlPanel = new Panel();
       controlPanel.setLayout(new FlowLayout());
@@ -65,7 +66,7 @@ public class ElevatorSimulationGui {
    }
    
    private void showFrameDemo(){
-      headerLabel.setText("Container in action: Frame");   
+      headerLabel.setText("This frame will contain the configurations");   
 
       final Frame frame = new Frame();
       frame.setSize(300, 300);
@@ -76,10 +77,12 @@ public class ElevatorSimulationGui {
             frame.dispose();
          }        
       });    
-      Button okButton = new Button("Open a Frame");
+      Button okButton = new Button("Launch simulation");
 
       okButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
+            // Maybe make this a message saying if the 
+            // simulation was successful or not, figure it out. 
             statusLabel.setText("A Frame shown to the user.");
             frame.setVisible(true);
          }

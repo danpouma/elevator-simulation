@@ -9,40 +9,46 @@ import java.awt.event.*;
  */
 public class ConfigGUI extends Frame implements ActionListener
 {
-    private Button btnButton;
+    private Button btnFloors;
+    private Button btnCapacity;
 
-    private TextField tfTextField = new TextField(20);
+    private TextField tfFloors = new TextField(20);
+    private TextField tfCapacity = new TextField(20);
    
-    public ConfigGUI ( )
+    public ConfigGUI()
     {
+        
         setTitle ("Configuration -- Elevator Simulation");
+        setSize(new Dimension(500, 350)); // (width, height)
         setResizable(false);
-        setSize(new Dimension(1000, 1000));
+        
         setLayout ( new FlowLayout( ));
-        
-        
 
-        add(new Label("Label for Text Field"));
-        add( tfTextField);
+        add(new Label("Number of floors:"));
+        add( tfFloors);
        
-    
-        btnButton = new Button("A Button");
-        add (btnButton);
-        btnButton.addActionListener(new ButtonHandler(this));
+        btnFloors = new Button("Set");
+        add (btnFloors);
+        btnFloors.addActionListener(new ButtonHandler(this));
 
-	addWindowListener( new CloseWindow( ));
+	addWindowListener(new CloseWindow( ));
     }
 
 
     class ButtonHandler implements ActionListener
     {
         ConfigGUI f;
+        
         ButtonHandler(ConfigGUI pf)
-        { f = pf;}
+        { 
+            f = pf;
+        }
+        
+        @Override
         public void actionPerformed (ActionEvent event)
         {
               f.buttonMethod( );
-              f.repaint( );
+              f.repaint();
         }// actionPerformed (ActionEvent event)
     }// CalculateHandler
 
@@ -50,24 +56,21 @@ public class ConfigGUI extends Frame implements ActionListener
     void buttonMethod( )
     {
         //What button does
-        tfTextField.setText("Button Works");
+        tfFloors.setText("Button Works");
     }// buttonMethod( )
 
+    @Override
     public void actionPerformed (ActionEvent event)
     {
-        repaint( );
+        repaint();
     }// actionPerformed
 
     //-----------------------------------------------
-    public static void main (String[] args)
-    {
-        Frame SimpleWindow1 = new ConfigGUI( );
-        SimpleWindow1.setSize(200,300);
-        SimpleWindow1.setVisible( true );
-    }// main
+    
     
     public class CloseWindow extends WindowAdapter
     {
+        @Override
         public void windowClosing(WindowEvent e)
         {
             System.exit(0);

@@ -38,6 +38,11 @@ public class ElevatorButton
         return this.isOn;
     }
     
+    public boolean isOff()
+    {
+        return this.isOn;
+    }
+    
     public void setLabel(String label)
     {
         this.label = label;

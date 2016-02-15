@@ -1,16 +1,5 @@
 package elevator;
 
-/*
- going to be reworking this code example
- into the main application.
-
- will have it be config window then
- once you hit the button it will kick off
- the simulation in a new window...
- diplay results and then you can close it..
-
- reconfigure and kick off... repeat etc
- */
 import java.awt.*;
 import java.awt.event.*;
 
@@ -23,7 +12,7 @@ public class ElevatorSimulationGui
 
     private Frame mainFrame;
 
-   // This panel will have text fields to store the configs
+    // This panel will have text fields to store the configs
     // may have the options controled by sliders or up down buttons
     // so there wont need to be error handling?
     private Panel configPanel;
@@ -53,9 +42,15 @@ public class ElevatorSimulationGui
         // Might be able to remove this since min dimension is set!
         mainFrame.setSize(500, 400);
         // Don't let user resize the window
+        // Why does this cause the window to drop to bottom????
+        // just make min size and max size until i find fix...
         mainFrame.setResizable(false);
+        
+        // Temp fix for setResizable dropping window to bottom
+        // this should put window to center
+        mainFrame.setLocationRelativeTo(null);
 
-      // Does this mean 3 rows? So each add is a row?
+        // Does this mean 3 rows? So each add is a row?
         // how can i add to column?
         mainFrame.setLayout(new GridLayout(3, 2));
         mainFrame.addWindowListener(new WindowAdapter()
@@ -67,8 +62,9 @@ public class ElevatorSimulationGui
             }
         });
 
-      //controlPanel.add(headerLabel);
-      // START CODE FOR CONFIG PANEL ********
+        //controlPanel.add(headerLabel);
+        
+        // START CODE FOR CONFIG PANEL ********
         //*************************************
         configPanel = new Panel();
         configPanel.setLayout(new FlowLayout()); // horiztonal, vert
@@ -78,6 +74,22 @@ public class ElevatorSimulationGui
         maxFloorLabel.setSize(250, 100);
         Button maxFloorButton = new Button("button for max floor");
         maxFloorButton.setSize(10, 10);
+        maxFloorButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("max floor button pressed...");
+                System.out.println(maxFloorLabel.getText());
+                
+                // Will need to verify input 
+                Config.maxFloor = Integer.parseInt(maxFloorLabel.getText());
+                System.out.println(Config.maxFloor);
+                // Maybe make this a message saying if the 
+                // simulation was successful or not, figure it out. 
+                //frame.setVisible(true);
+            }
+        });
 
         configPanel.add(maxFloorLabel);
         configPanel.add(maxFloorButton);
@@ -88,11 +100,27 @@ public class ElevatorSimulationGui
         capacityLabel.setSize(250, 100);
         Button capacityButton = new Button("button for capacity");
         capacityButton.setSize(10, 10);
+        capacityButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("capacity button pressed...");
+                System.out.println(capacityLabel.getText());
+                
+                // Will need to verify input
+                Config.elevatorCapacity = Integer.parseInt(capacityLabel.getText());
+                System.out.println(Config.elevatorCapacity);
+                // Maybe make this a message saying if the 
+                // simulation was successful or not, figure it out. 
+                //frame.setVisible(true);
+            }
+        });
 
         configPanel.add(capacityLabel);
         configPanel.add(capacityButton);
 
-      // END CODE FOR CONFIG PANEL **********
+        // END CODE FOR CONFIG PANEL **********
         //*************************************
         statusLabel = new Label();
         statusLabel.setAlignment(Label.CENTER);
@@ -105,7 +133,7 @@ public class ElevatorSimulationGui
         controlPanel = new Panel();
         controlPanel.setLayout(new FlowLayout());
 
-      // Should I set a background color?? hmmm
+        // Should I set a background color?? hmmm
         // could just be a fun capability for final program
         // user preference. Maybe store prefs? A prefs file
         //mainFrame.setBackground(Color.blue);
@@ -140,7 +168,7 @@ public class ElevatorSimulationGui
             @Override
             public void actionPerformed(ActionEvent e)
             {
-            // Maybe make this a message saying if the 
+                // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
                 statusLabel.setText("You pushed the button.");
                 frame.setVisible(true);

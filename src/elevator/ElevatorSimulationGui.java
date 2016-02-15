@@ -23,19 +23,25 @@ public class ElevatorSimulationGui
 
     private Label statusLabel;
     private Panel controlPanel;
+    
+    // Might move this to simulation method
+    // since its only used there
     private Label msglabel;
 
     public ElevatorSimulationGui()
     {
+        // For two notes... Planning to split constructor
+        // into multiple functions rather than just "prepareGUI"
         prepareGUI();
+        
+        // Moved this from main function, makes more sense for it to be here
+        // will properly move it next time
+        showSimulation();
     }
 
-    public static void main(String[] args)
-    {
-        ElevatorSimulationGui simulation = new ElevatorSimulationGui();
-        simulation.showFrameDemo();
-    }
 
+
+    // Considerring to split this up into multiple functions
     private void prepareGUI()
     {
         mainFrame = new Frame("Elevator Simulation!");
@@ -126,9 +132,7 @@ public class ElevatorSimulationGui
         statusLabel.setAlignment(Label.CENTER);
         statusLabel.setSize(350, 100);
 
-        msglabel = new Label();
-        msglabel.setAlignment(Label.CENTER);
-        msglabel.setText("This frame will show the simulation.");
+       
 
         controlPanel = new Panel();
         controlPanel.setLayout(new FlowLayout());
@@ -145,25 +149,32 @@ public class ElevatorSimulationGui
         mainFrame.setVisible(true);
     }
 
-    private void showFrameDemo()
+    // This method will be where the code that powers the simulation
+    // will be stored.
+    private void showSimulation()
     {
-        //headerLabel.setText("This frame will contain the configurations");   
-
         final Frame frame = new Frame();
         frame.setSize(400, 300);
         frame.setLayout(new FlowLayout());
+        
+        msglabel = new Label();
+        msglabel.setAlignment(Label.CENTER);
+        msglabel.setText("This frame will show the simulation.");
+        
+        
         frame.add(msglabel);
         frame.addWindowListener(new WindowAdapter()
         {
             @Override
             public void windowClosing(WindowEvent windowEvent)
             {
+                // is dispose proper way to close window?
                 frame.dispose();
             }
         });
-        Button okButton = new Button("Launch simulation");
+        Button launchSimulationButton = new Button("Launch simulation");
 
-        okButton.addActionListener(new ActionListener()
+        launchSimulationButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -174,7 +185,7 @@ public class ElevatorSimulationGui
                 frame.setVisible(true);
             }
         });
-        controlPanel.add(okButton);
+        controlPanel.add(launchSimulationButton);
 
         mainFrame.setVisible(true);
     }

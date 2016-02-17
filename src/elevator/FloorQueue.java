@@ -14,7 +14,8 @@ backPointer
 ^^ both start at 0
 
 backPointer to next available. when you enqueue it increments
-frontPointer points to first person. when you dequeue you remove that person then increment frontPointer to next persons whose turn to get off is.
+frontPointer points to first person. when you dequeue you remove that person
+then increment frontPointer to next persons whose turn to get off is.
 
 circularCount... when you hit bottom enqueing you just move it to top.
 */
@@ -27,7 +28,7 @@ import java.util.Queue;
  *
  * @author dpoumakis
  */
-public class ElevatorQueue
+public class FloorQueue
 {
     private int personCount;
     
@@ -37,13 +38,16 @@ public class ElevatorQueue
     // Points to next available spot
     private int backPointer;
     
+    // Does using interface queue automatically
+    // do the front pointer and back pointer?? test
+    // to find out
     Queue<Person> queue;
     
-    public ElevatorQueue()
+    public FloorQueue()
     {
-        this.personCount = 0;
-        this.frontPointer = 0;
-        this.backPointer = 0;
+        //this.personCount = 0;
+        //this.frontPointer = 0;
+        //this.backPointer = 0;
         this.queue = new LinkedList<>();
     }
     
@@ -58,7 +62,14 @@ public class ElevatorQueue
         Person nextOff = null;
         
         // need to catch if its empty
-        nextOff = this.queue.remove();
+        if (!this.queue.isEmpty())
+        {
+            nextOff = this.queue.remove();
+        }
+        else
+        {
+            // stay null
+        }
         
         return nextOff;
     }

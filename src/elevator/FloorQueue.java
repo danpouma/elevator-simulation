@@ -1,26 +1,5 @@
 package elevator;
 
-/*
-// Queues (first in first out (FIFO)
-enqueue(ELement) -- add an element
-Element dequeue -- remove an element
-clear() -- 
-isEmpty()
-isFull()
-
-frontPointer
-backPointer
-
-^^ both start at 0
-
-backPointer to next available. when you enqueue it increments
-frontPointer points to first person. when you dequeue you remove that person
-then increment frontPointer to next persons whose turn to get off is.
-
-circularCount... when you hit bottom enqueing you just move it to top.
-*/
-
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -30,13 +9,9 @@ import java.util.Queue;
  */
 public class FloorQueue
 {
+    // Use for isEmpty/Full
+    // wait.. can queue be full? make certain
     private int personCount;
-    
-    // Points to first person to go
-    private int frontPointer;
-    
-    // Points to next available spot
-    private int backPointer;
     
     // Does using interface queue automatically
     // do the front pointer and back pointer?? test
@@ -45,16 +20,15 @@ public class FloorQueue
     
     public FloorQueue()
     {
-        //this.personCount = 0;
-        //this.frontPointer = 0;
-        //this.backPointer = 0;
+        this.personCount = 0;
+
         this.queue = new LinkedList<>();
     }
     
     public void enqueue(Person person)
     {
         this.queue.add(person);
-        //this.backPointer++;
+        personCount++;
     }
     
     public Person dequeue()
@@ -65,6 +39,9 @@ public class FloorQueue
         if (!this.queue.isEmpty())
         {
             nextOff = this.queue.remove();
+            
+            // Verify that this is the best spot
+            personCount--;
         }
         else
         {
@@ -72,5 +49,10 @@ public class FloorQueue
         }
         
         return nextOff;
+    }
+    
+    public boolean isEmpty()
+    {
+        return this.queue.isEmpty();
     }
 }

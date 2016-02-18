@@ -16,25 +16,22 @@ boolean isDownOn()
 */
 package elevator;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  *
  * @author dpoumakis
  */
 public class Floor
 {
-    Queue<Person> upQueue;
-    Queue<Person> downQueue;
+    FloorQueue upQueue;
+    FloorQueue downQueue;
     
     ElevatorButton upButton;
     ElevatorButton downButton;
     
     public Floor()
     {
-        this.upQueue = new LinkedList<>();
-        this.downQueue = new LinkedList<>();
+        this.upQueue = new FloorQueue();
+        this.downQueue = new FloorQueue();
         
         this.upButton = new ElevatorButton("Up");
         this.downButton = new ElevatorButton("Down");
@@ -45,7 +42,10 @@ public class Floor
         
     }
     
+    public Person removePerson(boolean direction)
+    {
+        return null;
+    }
+    
     // Up/down isOn
-    // addPerson
-    // deletePerson
 }

@@ -9,13 +9,7 @@ import java.util.Queue;
  */
 public class FloorQueue
 {
-    // Use for isEmpty/Full
-    // wait.. can queue be full? make certain
     private int personCount;
-    
-    // Does using interface queue automatically
-    // do the front pointer and back pointer?? test
-    // to find out
     Queue<Person> queue;
     
     public FloorQueue()
@@ -33,9 +27,8 @@ public class FloorQueue
     
     public Person dequeue()
     {
-        Person nextOff = null;
+        Person nextOff;
         
-        // need to catch if its empty
         if (!this.queue.isEmpty())
         {
             nextOff = this.queue.remove();
@@ -45,14 +38,42 @@ public class FloorQueue
         }
         else
         {
-            // stay null
+            nextOff = null;
         }
         
         return nextOff;
     }
     
+    public int getPersonCount()
+    {
+        return this.personCount;
+    }
+    
+    public void setPersonCount(int personCount)
+    {
+        this.personCount = personCount;
+    }
+    
+    public int getSize()
+    {
+        return queue.size();
+    }
+    
+    public void clear()
+    {
+        while(!queue.isEmpty())
+        {
+            dequeue();
+        }
+    }
+    
     public boolean isEmpty()
     {
         return this.queue.isEmpty();
+    }
+    
+    public Person peek()
+    {
+        return queue.peek();
     }
 }

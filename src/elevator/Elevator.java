@@ -1,15 +1,6 @@
-/*
-elevator
--array of people
--array of button
--void addPerson(Person)
--Person removePerson(int floor) //what if none is on floor? have method handle a null.
--boolean isFull()
--boolean isOn(int floor)
-*/
 package elevator;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,29 +9,14 @@ import java.util.LinkedList;
 public class Elevator
 {
     int capacity;
-    LinkedList<Person> people;
-    LinkedList<ElevatorButton> buttons;
+    ArrayList<Person> people;
+    ArrayList<ElevatorButton> buttons;
     
     public Elevator()
     {
         this.capacity = Config.elevatorCapacity;
-        this.people = new LinkedList<>();
-        this.buttons = new LinkedList<>();
-        
-        // Initialize the buttons...
-        for (int i = 1; i <= Config.maxFloor; i++)
-        {
-            buttons.add(new ElevatorButton(i + ""));
-        }
-    }
-    
-    public Elevator(int capacity)
-    {
-        this.capacity = capacity;
-        this.people = new LinkedList<>();
-        this.buttons = new LinkedList<>();
-        
-        // Initialize the buttons...
+        this.people = new ArrayList<>();
+        this.buttons = new ArrayList<>();
         for (int i = 1; i <= Config.maxFloor; i++)
         {
             buttons.add(new ElevatorButton(i + ""));
@@ -49,14 +25,13 @@ public class Elevator
 
     void addPerson(Person person)
     {
-        // make sure to setOn persons floor via button
-        //buttonArray[addPerson.getStopFloor()].setOn();
         people.add(person);
+        buttons.get(person.getStopFloor()).turnOn();
     }
 
-    Person removePerson(int floor)
+    public ArrayList<Person> removePerson(int floor)
     {
-        Person personToRemove = null;
+        ArrayList<Person> peopleRemoved = new ArrayList<>();
         
         for (int person = 0; person < people.size(); person++)
         {
@@ -64,13 +39,12 @@ public class Elevator
             
             if (personStopFloor == floor)
             {
-                personToRemove = people.get(person);
+                peopleRemoved.add(people.get(person));
                 people.remove(person);
             }
         }
         
-        // make sure to handle if it stays null
-        return personToRemove;
+        return peopleRemoved;
     }
     
     boolean isFull()

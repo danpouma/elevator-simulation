@@ -1,19 +1,3 @@
-/*
-floor
-
-upQ //queue class
-downQ //queue class
-upButton //ebutton class
-downButton //ebutton class
-
-void addPerson(Person)
-Person removePerson(boolean direction)
-boolean isUpEmpty()
-boolean isDownEmpty()
-boolean isUpOn()
-boolean isDownOn()
-
-*/
 package elevator;
 
 /**
@@ -39,7 +23,7 @@ public class Floor
     
     public void addPerson(Person person)
     {
-        
+        // Where do I determine if up or down queue? ask them?
     }
     
     public Person removePerson(boolean direction)
@@ -47,5 +31,13 @@ public class Floor
         return null;
     }
     
-    // Up/down isOn
+    public boolean upIsOn()
+    {
+         
+    }
+    
+    public boolean downIsOn()
+    {
+        
+    }
 }

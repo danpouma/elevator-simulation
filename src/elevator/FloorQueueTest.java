@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package elevator;
-
-import java.util.ArrayList;
 
 /**
  *
@@ -13,34 +6,26 @@ import java.util.ArrayList;
  */
 public class FloorQueueTest
 {
-    public static void main(String[] args)
+    public static void main(String[] args) 
     {
         FloorQueue queue = new FloorQueue();
-        
-        ArrayList<Person> people = new ArrayList<>();
-        
-        for (int person = 0; person < 10; person++)
-        {
-            people.add(new Person());
-            queue.enqueue(people.get(person));
-        }
-        
-        System.out.println("********************************");
-        
-        for (int person = 0; person < 5; person++)
-        {
-            queue.dequeue().getId();
-        }
-        
-        for (int person = 10; person < 15; person++)
-        {
-            people.add(new Person());
-            queue.enqueue(people.get(person));
-        }
-        
-        for (int person = 0; person < 10; person++)
-        {
-            System.out.println(queue.dequeue().getId());
-        }
+        Person myPerson1 = new Person();
+        Person myPerson2 = new Person();
+        Person myPerson3 = new Person();
+        Person myPerson4 = new Person();
+        queue.enqueue(myPerson1);
+        queue.enqueue(myPerson2);
+        queue.enqueue(myPerson3);
+        System.out.println("Count is " + queue.getSize());
+        System.out.println("Out of line " + queue.dequeue().toString() );
+        System.out.println("Count is " + queue.getSize());
+        System.out.println("Out of line " + queue.dequeue().toString() );
+        System.out.println("Count is " + queue.getSize());
+        queue.enqueue(myPerson4);
+        System.out.println("Count is (after enqueue)" + queue.getSize());
+        System.out.println("Out of line " + queue.dequeue().toString() );
+        System.out.println("Count is " + queue.getSize());
+        System.out.println("Out of line " + queue.dequeue().toString() );
+        System.out.println("Count is " + queue.getSize());
     }
 }

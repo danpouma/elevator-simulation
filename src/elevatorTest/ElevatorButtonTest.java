@@ -1,5 +1,6 @@
-package elevator;
+package elevatorTest;
 
+import elevator.ElevatorButton;
 import elevator.ElevatorButton;
 
 /**

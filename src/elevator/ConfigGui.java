@@ -7,7 +7,7 @@ import java.awt.event.*;
  *
  * @author dpoumakis
  */
-public class ElevatorSimulationGui
+public class ConfigGui
 {
 
     private Frame mainFrame;
@@ -28,7 +28,7 @@ public class ElevatorSimulationGui
     // since its only used there
     private Label msglabel;
 
-    public ElevatorSimulationGui()
+    public ConfigGui()
     {
         // For two notes... Planning to split constructor
         // into multiple functions rather than just "prepareGUI"

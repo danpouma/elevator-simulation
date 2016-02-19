@@ -1,4 +1,6 @@
-package elevator;
+package elevatorTest;
+
+import elevator.*;
 
 /**
  *

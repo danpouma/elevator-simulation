@@ -8,13 +8,15 @@ import java.util.ArrayList;
  */
 public class Elevator
 {
-    int capacity;
+    private int capacity;
+    private int currentFloor;
     ArrayList<Person> people;
     ArrayList<ElevatorButton> buttons;
     
     public Elevator()
     {
         this.capacity = Config.elevatorCapacity;
+        this.currentFloor = 0;
         this.people = new ArrayList<>();
         this.buttons = new ArrayList<>();
         for (int i = 1; i <= Config.maxFloor; i++)
@@ -23,7 +25,7 @@ public class Elevator
         }
     }
 
-    void addPerson(Person person)
+    public void addPerson(Person person)
     {
         people.add(person);
         buttons.get(person.getStopFloor()).turnOn();
@@ -47,13 +49,35 @@ public class Elevator
         return peopleRemoved;
     }
     
-    boolean isFull()
+    public boolean isFull()
     {
-        return people.size() == this.capacity;
+        return people.size() == capacity;
     }
     
-    boolean isEmpty()
+    public boolean isEmpty()
     {
         return people.isEmpty();
+    }
+    
+    public int getCurrentFloor()
+    {
+        return currentFloor;
+    }
+    
+    public void setCurrentFloor(int currentFloor)
+    {
+        this.currentFloor = currentFloor;
+    }
+    
+    public void elevate()
+    {
+        // Will need to put in an if to make sure its valid
+        currentFloor++;
+    }
+    
+    public void descend()
+    {
+        // Will need to put in an if to make sure its valid
+        currentFloor--;
     }
 }

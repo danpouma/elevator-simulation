@@ -30,14 +30,4 @@ public class Floor
     {
         return null;
     }
-    
-    public boolean upIsOn()
-    {
-         
-    }
-    
-    public boolean downIsOn()
-    {
-        
-    }
 }

@@ -30,6 +30,24 @@ public class Person
         this.goingDown = false;
         this.goingUp = false;
     }
+    
+    public Person(int startFloor) 
+    {
+        this.id = counter++;
+        this.startFloor = startFloor;
+        this.goingDown = false;
+        this.goingUp = false;
+    }
+
+    public Person(int startFloor, int stopFloor) 
+    {
+        this.id = counter++;
+        this.startFloor = startFloor;
+        this.stopFloor = stopFloor;
+        this.goingDown = false;
+        this.goingUp = false;
+        
+    }
 
     public int getId()
     {

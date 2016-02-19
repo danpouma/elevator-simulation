@@ -13,6 +13,12 @@ public class FloorArrayTest
         // Create floor array
         FloorArray floors = new FloorArray();
         
+         // I will start at bottom floor and get off at top
+        Person me = new Person(0, Config.maxFloor - 1);
+        
+        // You will start at top floor and get off at top
+        Person you = new Person(Config.maxFloor - 1, 0);
+        
         // Test number of floors was set correctly
         if (floors.getNumberOfFloors() == Config.maxFloor)
         {
@@ -26,10 +32,9 @@ public class FloorArrayTest
         // For each floor add two people (1 up 1 down)
         for (int floor = 0; floor < floors.getNumberOfFloors(); floor++)
         {
-            // Start top go to bottom
-            floors.getFloor(floor).addPerson(new Person(0, Config.maxFloor));
-            // Start bottom go to top
-            floors.getFloor(floor).addPerson(new Person(Config.maxFloor - 1, 0));
+            floors.addPerson(me, floor);
+            
+            floors.addPerson(you, floor);
         }
         
         // Test each floors queues aren't empty

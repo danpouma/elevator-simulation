@@ -27,6 +27,12 @@ public class Floor
     public Floor(int floorNumber)
     {
         this.floorNumber = floorNumber;
+        
+        upQueue = new FloorQueue();
+        downQueue = new FloorQueue();
+       
+        upButton = new ElevatorButton("Up");
+        downButton = new ElevatorButton("Down");
     }
     
     public void addPerson(Person person)

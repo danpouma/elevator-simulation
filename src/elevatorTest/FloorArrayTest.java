@@ -55,6 +55,31 @@ public class FloorArrayTest
         {
             System.out.println("Test: Queues aren't empty - Pass");
         }
-    }
-    
+        
+        // For each floor remove 2 people
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            floors.getFromUpQueue(floor);
+            floors.getFromDownQueue(floor);
+        }
+        
+        // test that queues are now empty
+        boolean emptyQueueFound = false;
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            Floor currentFloor = floors.getFloor(floor);
+            if (!currentFloor.upIsOn() && !currentFloor.downIsOn())
+            {
+                emptyQueueFound = true;
+            }
+        }
+        if (emptyQueueFound)
+        {
+            System.out.println("Test: Queues are empty - Pass");
+        }
+        else
+        {
+            System.out.println("Test: Queues are empty - Fail");
+        }
+    } 
 }

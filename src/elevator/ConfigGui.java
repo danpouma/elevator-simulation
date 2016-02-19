@@ -161,10 +161,14 @@ public class ConfigGui
         
         msgMaxFloor = new Label();
         msgMaxFloor.setAlignment(Label.CENTER);
+        
+        // Put this down in launch listener, double check them
         msgMaxFloor.setText("Max floor--> " + Config.maxFloor);
         
         msgCapacity = new Label();
         msgCapacity.setAlignment(Label.CENTER);
+        
+        // Put this down in launch listener, double check them
         msgCapacity.setText("Elevator capacity --> " + Config.elevatorCapacity);
         
         frame.add(msgMaxFloor);
@@ -185,6 +189,11 @@ public class ConfigGui
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                /*
+                Double check the placement of these....!!!
+                */
+                msgMaxFloor.setText("Max floor--> " + Config.maxFloor);
+                msgCapacity.setText("Elevator capacity --> " + Config.elevatorCapacity);
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
                 statusLabel.setText("You pushed the button.");

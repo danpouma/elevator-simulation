@@ -9,37 +9,47 @@ public class FloorTest
 {
     public static void main(String[] args) 
     {
-
-        Person me = new Person(1, 4);
-        Person you = new Person(8, 4);
-        
+        // Create the floor
         Floor floor = new Floor();
-        
-        me.setGoingUp(true);
-        you.setGoingDown(true);
 
-        floor.addPerson(me);
+        // I will start at bottom floor and get off at top
+        Person me = new Person(0, Config.maxFloor - 1);
         
-        // This doesn't seem right
-        //floor.setButton();
+        // You will start at top floor and get off at top
+        Person you = new Person(Config.maxFloor - 1, 0);
         
-        
-        if (floor.upIsOn()) 
+        // Test if anyone is in the queues
+        if (!floor.upIsOn() && !floor.downIsOn())
         {
-            System.out.println("up");
+            System.out.println("Test: Initially empty - Pass");
+        }
+        else
+        {
+            System.out.println("Test: Initially empty - Fail");
         }
 
+        // Add people to the floor queues and test that they were added
+        floor.addPerson(me);
         floor.addPerson(you);
-        
-        // This doensn't seem right
-        //floor.setButton();
-        
-        // I think there is a bug with this one
-        // if I don't set going down it still prints
-        // need to look into that..
-        if (floor.downIsOn()) 
+        if (floor.upIsOn() && floor.downIsOn())
         {
-            System.out.println("down");
+            System.out.println("Test: Added to both queues - Pass");
+        }
+        else
+        {
+            System.out.println("Test: Added to both queues - Fail");
+        }
+        
+        // Remove people from the floor queues and test that they were removed
+        floor.getFromUpQueue();
+        floor.getFromDownQueue();
+        if (!floor.upIsOn() && !floor.downIsOn())
+        {
+            System.out.println("Test: Remove from both queues - Pass");
+        }
+        else
+        {
+            System.out.println("Test: Remove from both queues - Fail");
         }
     }
 }

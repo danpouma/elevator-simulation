@@ -39,13 +39,23 @@ public class Person
         this.goingUp = false;
     }
 
+    // Can automate which direction they're going via this function!
     public Person(int startFloor, int stopFloor) 
     {
         this.id = counter++;
         this.startFloor = startFloor;
         this.stopFloor = stopFloor;
-        this.goingDown = false;
-        this.goingUp = false;
+        
+        if (startFloor < stopFloor)
+        {
+            goingUp = true;
+            goingDown = false;
+        }
+        else
+        {
+            goingDown = true;
+            goingUp = false;
+        }
         
     }
 

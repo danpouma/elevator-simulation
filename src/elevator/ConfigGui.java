@@ -23,11 +23,7 @@ public class ConfigGui
 
     private Label statusLabel;
     private Panel controlPanel;
-    
-    // Might move this to simulation method
-    // since its only used there
-    private Label msglabel;
-
+   
     public ConfigGui()
     {
         // For two notes... Planning to split constructor
@@ -153,16 +149,26 @@ public class ConfigGui
     // will be stored.
     private void showSimulation()
     {
-        final Frame frame = new Frame();
+        final Frame frame = new Frame("This will eventually run simulation");
         frame.setSize(400, 300);
         frame.setLayout(new FlowLayout());
         
-        msglabel = new Label();
-        msglabel.setAlignment(Label.CENTER);
-        msglabel.setText("This frame will show the simulation.");
+        // Will need to add panels for better organization!
+        Label msgMaxFloor;
+        Label msgCapacity;
         
         
-        frame.add(msglabel);
+        
+        msgMaxFloor = new Label();
+        msgMaxFloor.setAlignment(Label.CENTER);
+        msgMaxFloor.setText("Max floor--> " + Config.maxFloor);
+        
+        msgCapacity = new Label();
+        msgCapacity.setAlignment(Label.CENTER);
+        msgCapacity.setText("Elevator capacity --> " + Config.elevatorCapacity);
+        
+        frame.add(msgMaxFloor);
+        frame.add(msgCapacity);
         frame.addWindowListener(new WindowAdapter()
         {
             @Override

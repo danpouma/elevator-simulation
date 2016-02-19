@@ -80,4 +80,36 @@ public class Elevator
         // Will need to put in an if to make sure its valid
         currentFloor--;
     }
+    
+    // Probably going to remove these two functions
+    // they are useful for testing for now...
+    public boolean peopleGoingUp()
+    {
+        boolean peopleGoingUp = false;
+        
+        for (int person = 0; person < people.size(); person++)
+        {
+            if (people.get(person).isGoingUp())
+            {
+                peopleGoingUp = true;
+            }
+        }
+        
+        return peopleGoingUp;
+    }
+    
+    public boolean peopleGoingDown()
+    {
+        boolean peopleGoingDown = false;
+        
+        for (int person = 0; person < people.size(); person++)
+        {
+            if (people.get(person).isGoingDown())
+            {
+                peopleGoingDown = true;
+            }
+        }
+        
+        return peopleGoingDown;
+    }
 }

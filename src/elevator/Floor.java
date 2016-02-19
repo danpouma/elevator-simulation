@@ -6,6 +6,9 @@ package elevator;
  */
 public class Floor
 {
+    // Used by FloorArray
+    private int floorNumber;
+    
     FloorQueue upQueue;
     FloorQueue downQueue;
     
@@ -19,6 +22,11 @@ public class Floor
        
         upButton = new ElevatorButton("Up");
         downButton = new ElevatorButton("Down");
+    }
+    
+    public Floor(int floorNumber)
+    {
+        this.floorNumber = floorNumber;
     }
     
     public void addPerson(Person person)
@@ -63,6 +71,40 @@ public class Floor
         return person;
     }
     
+    public Person getFromUpQueue()
+    {
+        Person person = null;
+        
+        if (upIsOn())
+        {
+            person = upQueue.dequeue();
+            
+            if (upQueue.isEmpty())
+            {
+                upButton.turnOff();
+            }
+        }
+        
+        return person;
+    }
+    
+    public Person getFromDownQueue()
+    {
+        Person person = null;
+        
+        if (downIsOn())
+        {
+            person = downQueue.dequeue();
+            
+            if (downQueue.isEmpty())
+            {
+                downButton.turnOff();
+            }
+        }
+        
+        return person;
+    }
+    
     public boolean upIsOn()
     {
         return upButton.isOn();
@@ -71,5 +113,15 @@ public class Floor
     public boolean downIsOn()
     {
         return downButton.isOn();
+    }
+    
+    public int getFloorNumber()
+    {
+        return floorNumber;
+    }
+    
+    public void setFloorNumber(int floorNumber)
+    {
+        this.floorNumber = floorNumber;
     }
 }

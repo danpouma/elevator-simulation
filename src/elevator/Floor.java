@@ -14,20 +14,40 @@ public class Floor
     
     public Floor()
     {
-        this.upQueue = new FloorQueue();
-        this.downQueue = new FloorQueue();
+        upQueue = new FloorQueue();
+        downQueue = new FloorQueue();
         
-        this.upButton = new ElevatorButton("Up");
-        this.downButton = new ElevatorButton("Down");
+        // Buttons are off by default
+        upButton = new ElevatorButton("Up");
+        downButton = new ElevatorButton("Down");
     }
     
     public void addPerson(Person person)
     {
-        // Where do I determine if up or down queue? ask them?
+        if (person.isGoingUp())
+        {
+            upQueue.enqueue(person);
+            upButton.turnOn();
+        }
+        else
+        {
+            downQueue.enqueue(person);
+            downButton.turnOn();
+        }
     }
     
     public Person removePerson(boolean direction)
     {
         return null;
+    }
+    
+    public boolean upIsOn()
+    {
+        return upButton.isOn();
+    }
+    
+    public boolean downIsOn()
+    {
+        return downButton.isOn();
     }
 }

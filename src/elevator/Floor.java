@@ -16,8 +16,7 @@ public class Floor
     {
         upQueue = new FloorQueue();
         downQueue = new FloorQueue();
-        
-        // Buttons are off by default
+       
         upButton = new ElevatorButton("Up");
         downButton = new ElevatorButton("Down");
     }
@@ -36,9 +35,32 @@ public class Floor
         }
     }
     
-    public Person removePerson(boolean direction)
+    public Person removePerson()
     {
-        return null;
+        Person person = null;
+        
+        if (upIsOn())
+        {
+            person = upQueue.dequeue();
+            
+            // Check if anyone left to go up
+            if (upQueue.isEmpty())
+            {
+                upButton.turnOff();
+            }
+        }
+        else
+        {
+            person = downQueue.dequeue();
+            
+            // Check if anyone left to go  down
+            if (downQueue.isEmpty())
+            {
+                downButton.turnOff();
+            }
+        }
+        
+        return person;
     }
     
     public boolean upIsOn()

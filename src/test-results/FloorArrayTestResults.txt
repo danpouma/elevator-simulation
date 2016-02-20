@@ -1,0 +1,3 @@
+Test: Number of floors - Pass
+Test: Queues aren't empty - Pass
+Test: Queues are empty - Pass

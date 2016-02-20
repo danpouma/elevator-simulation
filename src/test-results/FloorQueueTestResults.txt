@@ -1,0 +1,10 @@
+Count is 3
+Out of line 0
+Count is 2
+Out of line 1
+Count is 1
+Count is (after enqueue)2
+Out of line 2
+Count is 1
+Out of line 3
+Count is 0

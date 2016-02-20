@@ -1,0 +1,5 @@
+Test: Initially empty - Pass
+Test: Adding people - Pass
+Test: People going up - Pass
+Test: People going down - Pass
+Test: Removing people - Pass

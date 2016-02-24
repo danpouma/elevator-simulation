@@ -10,6 +10,9 @@ public class Config
     // rename this to numberOfFloors
     public static int maxFloor = 10;
     
+    // Add this into the config gui
+    public static int numberOfElevators = 10;
+    
     public static int elevatorCapacity = 10;
     
     public void setMaxFloor(int maxFloor)

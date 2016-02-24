@@ -20,6 +20,7 @@ public class ConfigGui
     // will have to convert labels to text fields possibly...
     private TextField capacityLabel;
     private TextField maxFloorLabel;
+    private TextField elevatorsLabel;
 
     private Label statusLabel;
     private Panel controlPanel;
@@ -121,6 +122,32 @@ public class ConfigGui
 
         configPanel.add(capacityLabel);
         configPanel.add(capacityButton);
+        
+        // Number of elevators...
+        elevatorsLabel = new TextField("Enter number of elevators...");
+        //headerLabel.setAlignment(Label.CENTER);
+        elevatorsLabel.setSize(250, 100);
+        Button elevatorsButton = new Button("button for # of elevators");
+        elevatorsButton.setSize(10, 10);
+        elevatorsButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("elevators button pressed...");
+                System.out.println(elevatorsLabel.getText());
+                
+                // Will need to verify input
+                Config.numberOfElevators = Integer.parseInt(elevatorsLabel.getText());
+                System.out.println(Config.numberOfElevators);
+                // Maybe make this a message saying if the 
+                // simulation was successful or not, figure it out. 
+                //frame.setVisible(true);
+            }
+        });
+
+        configPanel.add(elevatorsLabel);
+        configPanel.add(elevatorsButton);
 
         // END CODE FOR CONFIG PANEL **********
         //*************************************
@@ -152,6 +179,19 @@ public class ConfigGui
         final Frame frame = new Frame("This will eventually run simulation");
         frame.setSize(400, 300);
         frame.setLayout(new FlowLayout());
+        
+        /* Add to make the pop up frame go center */
+        
+        // Don't let user resize the window
+        // Why does this cause the window to drop to bottom????
+        // just make min size and max size until i find fix...
+        frame.setResizable(false);
+        
+        // Temp fix for setResizable dropping window to bottom
+        // this should put window to center
+        frame.setLocationRelativeTo(null);
+        
+        /*******************************************/
         
         // Will need to add panels for better organization!
         Label msgMaxFloor;

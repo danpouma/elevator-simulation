@@ -20,14 +20,24 @@ public class Building
     public Building()
     {
         // Initialize the elevators
+        elevators = new Elevator[Config.numberOfElevators];
+        for (int elevator = 0; elevator < Config.numberOfElevators; elevator++)
+        {
+            // Create elevator in each null element
+            elevators[elevator] = new Elevator();
+        }
         
         // Initialize the floors
+        floors = new FloorArray();
         
-        // Initialize the controller
+        // Initialize the controller (might require more info
+        elevatorController = new ElevatorController();
         
+        // Could be determined by gui
         currentFloor = 0;
         
         // Figure out how to use enum for this
+        // also could be determined by gui
         currentDirection = 0;
         
     }

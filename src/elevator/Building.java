@@ -44,12 +44,31 @@ public class Building
     
     public void moveElevator(int direction)
     {
-        // use controller to move up
+        // use controller to move elevator
+        // add enums for up, down and none
     }
     
     public void addPerson(Person person)
     {
         // Hand person to the floor array
+        // By default user currentFloor
+        floors.addPerson(person, currentFloor);
+    }
+    
+    // For testing that addPerson works
+    // verify that this is actually works...
+    public boolean hasPerson()
+    {
+        boolean hasPerson = false;
+        
+        // Add method for detecting if floor is empty
+        if (floors.getFloor(currentFloor).isEmpty())
+        {
+            hasPerson = true;
+        }
+        
+        return hasPerson;
+        
     }
     
 }

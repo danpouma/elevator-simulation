@@ -130,4 +130,16 @@ public class Floor
     {
         this.floorNumber = floorNumber;
     }
+    
+    public boolean isEmpty()
+    {
+        boolean isEmpty = false;
+        
+        if (upQueue.isEmpty() || downQueue.isEmpty())
+        {
+            isEmpty = true;
+        }
+        
+        return isEmpty;
+    }
 }

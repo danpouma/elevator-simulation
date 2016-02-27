@@ -32,7 +32,12 @@ public class Elevator
     public void addPerson(Person person)
     {
         people.add(person);
-        buttons.get(person.getStopFloor()).turnOn();
+        
+        // hmm button is causing elevator controller test to fail..
+        // the fix for now is to correct the offset by 1.
+        // there is probably other areas impacted by it too.
+        // do a full investigation! may need to re-implemnet person class
+        buttons.get(person.getStopFloor() - 1).turnOn();
     }
 
     public ArrayList<Person> removePerson(int floor)

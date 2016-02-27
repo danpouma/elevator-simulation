@@ -107,6 +107,17 @@ public class Person
 
     public boolean isGoingUp()
     {
+        // Add automation for check up
+        if (startFloor < stopFloor)
+        {
+            goingUp = true;
+            goingDown = false;
+        }
+        else
+        {
+            goingUp = false;
+            goingDown = true;
+        }
         return goingUp;
     }
 
@@ -117,6 +128,17 @@ public class Person
 
     public boolean isGoingDown()
     {
+        // Add automation for check down
+        if (startFloor < stopFloor)
+        {
+            goingUp = true;
+            goingDown = false;
+        }
+        else
+        {
+            goingUp = false;
+            goingDown = true;
+        }
         return goingDown;
     }
 

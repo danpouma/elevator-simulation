@@ -22,11 +22,6 @@ public class ElevatorController
                 Floor currentFloor = floors.getFloor(floor);
                 
                 currentElevator.addPerson(currentFloor.getFromUpQueue());
-                //System.out.println(currentElevator.getPeople().size());
-                
-                
-                currentElevator.removePerson(floor);
-                //System.out.println(currentElevator.getPeople().size());
             }
         }
     }

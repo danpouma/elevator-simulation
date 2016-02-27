@@ -1,7 +1,6 @@
 package elevatorTest;
 
 import elevator.Person;
-import elevator.Person;
 
 /**
  *

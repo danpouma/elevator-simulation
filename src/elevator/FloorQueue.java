@@ -69,7 +69,7 @@ public class FloorQueue
     
     public boolean isEmpty()
     {
-        return this.queue.isEmpty();
+        return queue.isEmpty();
     }
     
     public Person peek()

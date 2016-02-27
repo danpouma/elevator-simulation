@@ -21,9 +21,17 @@ public class ElevatorController
             {
                 Floor currentFloor = floors.getFloor(floor);
                 
-                currentElevator.addPerson(currentFloor.getFromUpQueue());
+                while (!currentFloor.isEmpty()) //&& !currentElevator.isFull())
+                {
+                    currentElevator.addPerson(currentFloor.getFromUpQueue());
+                }
             }
+            System.out.println(currentElevator.getPeople().size());
         }
+        
+        
+        
+        
     }
     
 }

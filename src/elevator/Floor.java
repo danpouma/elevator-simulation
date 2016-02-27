@@ -135,14 +135,9 @@ public class Floor
     {
         boolean isEmpty = false;
         
-        if (upQueue.isEmpty() || downQueue.isEmpty())
+        if (upQueue.isEmpty() && downQueue.isEmpty())
         {
             isEmpty = true;
-        }
-        
-        if (upIsOn() || downIsOn())
-        {
-            System.out.println("onnnn");
         }
         
         return isEmpty;

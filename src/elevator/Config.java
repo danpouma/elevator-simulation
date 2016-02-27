@@ -13,7 +13,8 @@ public class Config
     // Add this into the config gui
     public static int numberOfElevators = 2;
     
-    public static int elevatorCapacity = 10;
+    // Making high number for testing purposes
+    public static int elevatorCapacity = 10000;
     
     public void setMaxFloor(int maxFloor)
     {

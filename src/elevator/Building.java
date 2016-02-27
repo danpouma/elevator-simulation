@@ -6,69 +6,63 @@ package elevator;
  */
 public class Building
 {
-    private Elevator[] elevators;
-    private FloorArray floors;
-    
-    // Many ways to structure the controller, work on it
-    private ElevatorController elevatorController;
-    
     private int currentFloor;
     
-    // Can probably use enum for this
+    // Will need to have a better idea
+    // of how the direction will be implemented
     private int currentDirection;
+    
+    private Elevator[] elevators;
+    private ElevatorController elevatorController;
+    private FloorArray floors;
     
     public Building()
     {
-        // Initialize the elevators
-        elevators = new Elevator[Config.numberOfElevators];
-        for (int elevator = 0; elevator < Config.numberOfElevators; elevator++)
-        {
-            // Create elevator in each null element
-            elevators[elevator] = new Elevator();
-        }
-        
-        // Initialize the floors
-        floors = new FloorArray();
-        
-        // Initialize the controller (might require more info
-        elevatorController = new ElevatorController();
-        
-        // Could be determined by gui
+         //currentFloor = Config.startFloor; // have  0 by default
         currentFloor = 0;
         
         // Figure out how to use enum for this
         // also could be determined by gui
         currentDirection = 0;
         
+        elevators = new Elevator[Config.numberOfElevators];
+        for (int elevator = 0; elevator < Config.numberOfElevators; elevator++)
+        {
+            elevators[elevator] = new Elevator();
+        }
+        elevatorController = new ElevatorController();
+        floors = new FloorArray();
     }
     
-    public void moveElevator(int direction)
+    // Probably could rename to startElevator
+    public void moveElevator() //int direction, int id)
     {
         // use controller to move elevator
         // add enums for up, down and none
+        
+        // Maybe pass elevator id?
+        elevatorController.moveElevator(floors, elevators);
     }
     
-    public void addPerson(Person person)
+    public void addPerson(Person person, int floor)
     {
         // Hand person to the floor array
         // By default user currentFloor
-        floors.addPerson(person, currentFloor);
+        //floors.addPerson(person, currentFloor);
+        
+        // Need to use this for now. How can i change currentFloor
+        // from within the elevatorController?
+        floors.addPerson(person, floor);
     }
     
-    // For testing that addPerson works
-    // verify that this is actually works...
-    public boolean hasPerson()
+    public FloorArray getFloors()
     {
-        boolean hasPerson = false;
-        
-        // Add method for detecting if floor is empty
-        if (floors.getFloor(currentFloor).isEmpty())
-        {
-            hasPerson = true;
-        }
-        
-        return hasPerson;
-        
+        return floors;
     }
     
+    // Lets increment floors this way for now...
+    public void nextFloor()
+    {
+        currentFloor++;
+    }
 }

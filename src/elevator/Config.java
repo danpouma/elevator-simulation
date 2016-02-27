@@ -11,7 +11,7 @@ public class Config
     public static int maxFloor = 10;
     
     // Add this into the config gui
-    public static int numberOfElevators = 10;
+    public static int numberOfElevators = 2;
     
     public static int elevatorCapacity = 10;
     

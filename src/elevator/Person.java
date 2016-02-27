@@ -7,7 +7,8 @@ package elevator;
  */
 public class Person
 {
-    private int id;
+    // Make id constant
+    private final int id;
     
     private int startFloor;
     private int stopFloor;

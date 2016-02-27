@@ -19,6 +19,11 @@ public class FloorArray
             floors.add(new Floor(floor));
         }   
     }
+    
+    public int getSize()
+    {
+        return floors.size();
+    }
  
     public Floor getFloor(int floor)
     {
@@ -34,6 +39,7 @@ public class FloorArray
     {
         getFloor(floor).addPerson(person);
     }
+    
     
     public Person getFromUpQueue(int floor)
     {

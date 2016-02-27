@@ -1,7 +1,6 @@
 package elevatorTest;
 
-import elevator.Building;
-import elevator.Person;
+import elevator.*;
 
 /**
  *
@@ -11,37 +10,17 @@ public class BuildingTest
 {
     public static void main(String[] args)
     {
-        // Create person
-        Person person = new Person();
-        
         // Create building
         Building building = new Building();
         
-        
-        // This fails... verify building has no people initially
-        // is this even valid
-        if (building.hasPerson())
+        for (int floor = 0; floor < Config.maxFloor; floor++)
         {
-            System.out.println("Test: Building has no people initially - Pass");
-        }
-        else
-        {
-            System.out.println("Test: Building has no people initially - Fail");
+            // Add a person to each floor all get off at top floor
+            building.addPerson(new Person(0, 3), floor);
+            System.out.println(building.getFloors().getFloor(floor).isEmpty());
+            
         }
         
-        // Add person to building
-        building.addPerson(person);
-        
-        if (building.hasPerson())
-        {
-            System.out.println("Test: Adding person to building passed - Pass");
-        }
-        else
-        {
-            System.out.println("Test: Adding person to building passed - Fail");
-        }
-        
-        
-        
+        //building.moveElevator();
     }
 }

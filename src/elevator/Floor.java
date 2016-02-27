@@ -140,6 +140,11 @@ public class Floor
             isEmpty = true;
         }
         
+        if (upIsOn() || downIsOn())
+        {
+            System.out.println("onnnn");
+        }
+        
         return isEmpty;
     }
 }

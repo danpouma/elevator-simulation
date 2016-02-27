@@ -116,4 +116,10 @@ public class Elevator
         
         return peopleGoingDown;
     }
+    
+    // Adding this method for testing elevator controller
+    public ArrayList<Person> getPeople()
+    {
+        return people;
+    }
 }

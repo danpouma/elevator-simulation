@@ -8,17 +8,21 @@ import java.util.ArrayList;
  */
 public class Elevator
 {
+    private final int id;
     private int capacity;
     private int currentFloor;
     ArrayList<Person> people;
     ArrayList<ElevatorButton> buttons;
     
+    private static int counter = 0;
+    
     public Elevator()
     {
-        this.capacity = Config.elevatorCapacity;
-        this.currentFloor = 0;
-        this.people = new ArrayList<>();
-        this.buttons = new ArrayList<>();
+        id = counter++;
+        capacity = Config.elevatorCapacity;
+        currentFloor = 0;
+        people = new ArrayList<>();
+        buttons = new ArrayList<>();
         for (int i = 1; i <= Config.maxFloor; i++)
         {
             buttons.add(new ElevatorButton(i + ""));

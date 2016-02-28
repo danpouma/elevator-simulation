@@ -16,8 +16,14 @@ public class Elevator
     
     private static int counter = 0;
     
+    // Variable for testing number of people on the elevator.
+    private int numberOfOccupants;
+    
     public Elevator()
     {
+        // Test variable..
+        numberOfOccupants = 0;
+        
         id = counter++;
         capacity = Config.elevatorCapacity;
         currentFloor = 0;
@@ -38,6 +44,8 @@ public class Elevator
         // there is probably other areas impacted by it too.
         // do a full investigation! may need to re-implemnet person class
         buttons.get(person.getStopFloor() - 1).turnOn();
+        
+        numberOfOccupants++;
     }
 
     public ArrayList<Person> removePeople(int floor)
@@ -57,6 +65,7 @@ public class Elevator
                 {
                     peopleRemoved.add(currentPerson);
                     people.remove(currentPerson);
+                    numberOfOccupants--;
                 }
             }
             
@@ -145,5 +154,10 @@ public class Elevator
     public ArrayList<Person> getPeople()
     {
         return people;
+    }
+    
+    public int getNumberOfOccupants()
+    {
+        return numberOfOccupants;
     }
 }

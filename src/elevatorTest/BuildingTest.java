@@ -13,9 +13,6 @@ public class BuildingTest
         // Create building
         Building building = new Building();
 
-  
-        
-        
         //Test 1: Move people from the bottom floor to the top floor
         for (int people = 0; people < Config.elevatorCapacity; people++)
         {
@@ -45,8 +42,15 @@ public class BuildingTest
             System.out.println("Test: Empty floor 0 && people going up - Fail");
         }
         
-        System.out.println(elevators[0].getPeople().size());
+        
         building.moveElevator();
-        System.out.println(elevators[0].getPeople().size());
+        if (building.getFloors().getFloor(9).isEmpty() && elevators[0].isEmpty())
+        {
+            System.out.println("Test: Removed people on floor 10 - Pass");
+        }
+        else
+        {
+            System.out.println("Test: Removed poeple on floor 10 - Fail");
+        }
     }
 }

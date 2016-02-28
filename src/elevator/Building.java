@@ -1,5 +1,7 @@
 package elevator;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dpoumakis
@@ -32,6 +34,16 @@ public class Building
         }
         elevatorController = new ElevatorController();
         floors = new FloorArray();
+    }
+    
+    public FloorArray getFloor()
+    {
+        return floors;
+    }
+    
+    public Elevator[] getElevators()
+    {
+        return elevators;
     }
     
     // Probably could rename to startElevator

@@ -11,26 +11,53 @@ public class ElevatorControllerTest
     public static void main(String[] args)
     {
         ElevatorController controller = new ElevatorController();
-        
         FloorArray floors = new FloorArray();
-        
-        // Need to add people to the floors
-        for (int floor = 0; floor < Config.maxFloor; floor++)
-        {
-            // 3 people per floor
-            for (int i = 0; i < 3; i++)
-            {
-                floors.getFloor(floor).addPerson(new Person(floor, Config.maxFloor));
-            }
-        }
-        
         Elevator[] elevators = new Elevator[1];
-        
         for (int elevator = 0; elevator < elevators.length; elevator++)
         {
             elevators[elevator] = new Elevator();
         }
         
-        controller.moveElevator(floors, elevators);
+        
+        //Test 1: Move people from the bottom floor to the top floor
+        for (int people = 0; people < Config.elevatorCapacity; people++)
+        {
+            floors.addPerson(new Person(0, 9), 0);
+        }
+        if (floors.getFloor(0).isEmpty())
+        {
+            System.out.println("Test: Fill floor 0 - Fail");
+        }
+        else
+        {
+            System.out.println("Test: Fill floor 0 - Pass");
+        }
+        
+        while (!floors.getFloor(0).isEmpty())
+        {
+            elevators[0].addPerson(floors.getFloor(0).getFromUpQueue());
+        }
+        if (floors.getFloor(0).isEmpty() && elevators[0].peopleGoingUp())
+        {
+            System.out.println("Test: Empty floor 0 && people going up - Pass");
+        }
+        else
+        {
+            System.out.println("Test: Empty floor 0 && people going up - Fail");
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+   
+        
+        
+        // Wait till i prep everything else
+        //controller.moveElevator(floors, elevators);
     }
 }

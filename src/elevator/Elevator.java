@@ -40,18 +40,37 @@ public class Elevator
         buttons.get(person.getStopFloor() - 1).turnOn();
     }
 
-    public ArrayList<Person> removePerson(int floor)
+    public ArrayList<Person> removePeople(int floor)
     {
+        boolean stillRemoving = true;
         ArrayList<Person> peopleRemoved = new ArrayList<>();
         
-        for (int person = 0; person < people.size(); person++)
+        while (stillRemoving)
         {
-            int personStopFloor = people.get(person).getStopFloor();
-            
-            if (personStopFloor == floor)
+            for (int person = 0; person < people.size(); person++)
             {
-                peopleRemoved.add(people.get(person));
-                people.remove(person);
+                Person currentPerson = people.get(person);
+                
+                int personStopFloor = currentPerson.getStopFloor();
+                
+                if (floor == personStopFloor)
+                {
+                    peopleRemoved.add(currentPerson);
+                    people.remove(currentPerson);
+                }
+            }
+            
+            stillRemoving = false;
+            for (int person = 0; person < people.size(); person++)
+            {
+                Person currentPerson = people.get(person);
+                
+                int personStopFloor = currentPerson.getStopFloor();
+                
+                if (floor == personStopFloor)
+                {
+                    stillRemoving = true;
+                }
             }
         }
         

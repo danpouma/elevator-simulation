@@ -8,36 +8,14 @@ import java.util.ArrayList;
  */
 public class ElevatorController
 {
-    public ElevatorController()
-    {
-        // Controller classes shouldn't hold data
-        // therefore... empty default constructor
-    }
+    public ElevatorController() {}
     
     public void moveElevator(FloorArray floors, Elevator[] elevators)
     {
-        // Add people
-        for (int elevator = 0; elevator < elevators.length; elevator++)
+        for (int floor = 0; floor < Config.maxFloor; floor++)
         {
-            Elevator currentElevator = elevators[elevator];
-            for (int floor = 0; floor < floors.getSize(); floor++)
-            {
-                Floor currentFloor = floors.getFloor(floor);
-                
-                currentElevator = addPeople(currentFloor, currentElevator);
-            }
-            System.out.println(currentElevator.getPeople().size());   
+            elevators[0].removePeople(floor);
         }
-        
-        // Remove people
-        
-        /*
-        Figure out how to clear people that's stop floor
-        matches the one passed.
-        Every is maxFloor and only half were removed....
-        */
-        elevators[0].removePerson(Config.maxFloor);
-        System.out.println(elevators[0].getPeople().size());
     }
     
     public Elevator addPeople(Floor floor, Elevator elevator)
@@ -55,7 +33,7 @@ public class ElevatorController
     {
         ArrayList<Person> peopleRemoved;
         
-        peopleRemoved = elevator.removePerson(floor.getFloorNumber());
+        peopleRemoved = elevator.removePeople(floor.getFloorNumber());
         
         System.out.println("Floor "+floor.getFloorNumber() +": " +peopleRemoved.size());
         

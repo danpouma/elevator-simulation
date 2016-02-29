@@ -152,4 +152,9 @@ public class Floor
     {
         return downQueue;
     }
+    
+    public int numberOfPeople()
+    {
+        return upQueue.getPersonCount() + downQueue.getPersonCount();
+    }
 }

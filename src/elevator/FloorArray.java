@@ -59,6 +59,9 @@ public class FloorArray
         {
             Floor currentFloor = floors.get(floor);
             
+            System.out.println(currentFloor.getUpQueue().getSize());
+            System.out.println(currentFloor.getDownQueue().getSize());
+            
             numberOfPeople += currentFloor.getUpQueue().getSize();
             numberOfPeople += currentFloor.getDownQueue().getSize();
         }

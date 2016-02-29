@@ -38,13 +38,28 @@ public class BuildingTest
                     {
                         invalidStop = true;
                     }
+                    
                 } while (invalidStop);
             }
+        }
+        
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            Floor currentFloor = building.getFloors().getFloor(floor);
             
-            System.out.println(currentFloor.getUpQueue().getSize() + currentFloor.getDownQueue().getSize());
+            
+            for (int i = 0; i < 10; i++)
+            {
+                building.moveElevator();
+            }
+            
+            System.out.println("Floor " + floor + ": " + currentFloor.numberOfPeople());
         }
         
         
+        String test = "test";
+        
+        test.
         
         
         
@@ -81,12 +96,11 @@ public class BuildingTest
         }
         */
         
-        for (int i = 0; i < 40; i++)
-        {
-            System.out.println(building.getNumberOfPeople());
-            building.moveElevator();
-            
-        }
+        //for (int i = 0; i < 40; i++)
+        //{
+            //System.out.println(building.getNumberOfPeople());
+            //building.moveElevator();  
+        //}
             
         
         

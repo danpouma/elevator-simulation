@@ -24,7 +24,7 @@ public class Person
     private static int counter = 0;
 
     public Person()
-    {
+    {   
         // is this id working correctly
         this.id = counter++;
         this.maxFloor = Config.maxFloor;

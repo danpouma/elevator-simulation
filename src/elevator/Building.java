@@ -77,4 +77,28 @@ public class Building
     {
         currentFloor++;
     }
+    
+    public boolean hasPeopleInQueue()
+    {
+        boolean hasPeopleInQueue = false;
+        
+        Floor thisFloor;
+        
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            thisFloor = floors.getFloor(floor);
+            
+            if (!thisFloor.isEmpty())
+            {
+                hasPeopleInQueue = true;
+            }
+        }
+        
+        return hasPeopleInQueue;
+    }
+    
+    public int getNumberOfPeople()
+    {
+        return floors.getNumberOfFloors();
+    }
 }

@@ -51,4 +51,18 @@ public class FloorArray
         return getFloor(floor).getFromDownQueue();
     }
     
+    public int numberOfPeople()
+    {
+        int numberOfPeople = 0;
+        
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            Floor currentFloor = floors.get(floor);
+            
+            numberOfPeople += currentFloor.getUpQueue().getSize();
+            numberOfPeople += currentFloor.getDownQueue().getSize();
+        }
+        
+        return numberOfPeople;
+    }
 }

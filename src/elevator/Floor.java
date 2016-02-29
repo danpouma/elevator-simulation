@@ -142,4 +142,14 @@ public class Floor
         
         return isEmpty;
     }
+    
+    public FloorQueue getUpQueue()
+    {
+        return upQueue;
+    }
+    
+    public FloorQueue getDownQueue()
+    {
+        return downQueue;
+    }
 }

@@ -43,7 +43,9 @@ public class Elevator
         // the fix for now is to correct the offset by 1.
         // there is probably other areas impacted by it too.
         // do a full investigation! may need to re-implemnet person class
-        buttons.get(person.getStopFloor() - 1).turnOn();
+        
+        // This line causes issues. Need to figure it out
+        //buttons.get(person.getStopFloor() - 1).turnOn();
         
         numberOfOccupants++;
     }

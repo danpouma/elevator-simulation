@@ -3,7 +3,6 @@ package elevatorTest;
 import elevator.Config;
 import elevator.Elevator;
 import elevator.ElevatorController;
-import elevator.Floor;
 import elevator.FloorArray;
 import elevator.PeopleGenerator;
 

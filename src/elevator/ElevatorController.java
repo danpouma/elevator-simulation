@@ -18,7 +18,7 @@ public class ElevatorController
             
             
             // damn u bug!!!
-            elevators[0].removePerson(floor);
+            elevators[0].removePeople(floor);
             
             
             while (!currentFloor.isEmpty()) //&& !elevators[0].isFull())

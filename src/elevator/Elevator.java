@@ -53,31 +53,51 @@ public class Elevator
         numberOfOccupants++;
     }
     
+    public boolean hasPersonGettingOff(int floor)
+    {
+        boolean hasPersonGettingOff = false;
+        
+        for (Person person : people)
+        {
+            if (person.getStopFloor() == floor)
+            {
+                hasPersonGettingOff = true;
+            }
+        }
+        
+        return hasPersonGettingOff;
+    }
+    
     public Person removePerson(int floor)
     {
         Person personRemoved = null;
         
-        for (int person = 0; person < people.size(); person++)
+        for (Person person : people)
         {
-            Person currentPerson = people.get(person);
-            System.out.println(currentPerson.getStopFloor());
-            int currentStopFloor = currentPerson.getStopFloor();
-            
-            if (currentStopFloor == floor)
+            if (person.getStopFloor() == floor)
             {
-                personRemoved = currentPerson;
-                people.remove(currentPerson);
+                personRemoved = person;
+                people.remove(person);
+                // Not good practice but it works :)
+                break;
             }
         }
         
         return personRemoved;
     }
-    /*
+    
     public ArrayList<Person> removePeople(int floor)
     {
         boolean stillRemoving = true;
         ArrayList<Person> peopleRemoved = new ArrayList<>();
         
+        System.out.println(floor);
+        while (hasPersonGettingOff(floor))
+        {
+            peopleRemoved.add(removePerson(floor));
+        }
+        
+        /*
         while (stillRemoving)
         {
             for (int person = 0; person < people.size(); person++)
@@ -119,10 +139,11 @@ public class Elevator
                 }
             }
         }
+                */
         
         return peopleRemoved;
     }
-    */
+    
     
     // Utilize this...
     public boolean isFull()

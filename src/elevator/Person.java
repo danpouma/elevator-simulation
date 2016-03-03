@@ -29,6 +29,8 @@ public class Person
         this.maxFloor = Config.maxFloor;
         this.goingDown = false;
         this.goingUp = false;
+        startFloor = 0;
+        stopFloor = 0;
     }
     
     public Person(int startFloor) 
@@ -37,6 +39,7 @@ public class Person
         this.startFloor = startFloor;
         this.goingDown = false;
         this.goingUp = false;
+        stopFloor = 0;
     }
 
     // Can automate which direction they're going via this function!

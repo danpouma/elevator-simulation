@@ -45,16 +45,14 @@ public class Floor
     
     public Person getFromUpQueue()
     {
+        // This is the null being returned
         Person person = null;
         
-        if (upIsOn())
+        person = upQueue.dequeue();
+
+        if (upQueue.isEmpty())
         {
-            person = upQueue.dequeue();
-            
-            if (upQueue.isEmpty())
-            {
-                upButton.turnOff();
-            }
+            upButton.turnOff();
         }
         
         return person;
@@ -117,6 +115,7 @@ public class Floor
     public void addToUpQueue(Person person)
     {
         upQueue.enqueue(person);
+        upButton.turnOn();
     }
     
     public void addToDownQueue(Person person)

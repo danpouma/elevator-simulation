@@ -110,7 +110,11 @@ public class Person
     public boolean isGoingUp()
     {
         // Add automation for check up
-        if (startFloor < stopFloor)
+        if (startFloor == stopFloor)
+        {
+            System.out.println("yo that shit is equal");
+        }
+        else if (startFloor < stopFloor)
         {
             goingUp = true;
             goingDown = false;

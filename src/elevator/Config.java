@@ -16,6 +16,8 @@ public class Config
     // Making high number for testing purposes
     public static int elevatorCapacity = 10;
     
+    public static int numberOfPeople = 30;
+    
     public void setMaxFloor(int maxFloor)
     {
         Config.maxFloor = maxFloor;

@@ -20,6 +20,11 @@ public class FloorArray
         }   
     }
     
+    public ArrayList<Floor> getFloors()
+    {
+        return floors;
+    }
+    
     public int getSize()
     {
         return floors.size();
@@ -40,7 +45,7 @@ public class FloorArray
         getFloor(floor).addPerson(person);
     }
     
-    
+    // Look into removing these
     public Person getFromUpQueue(int floor)
     {
         return getFloor(floor).getFromUpQueue();
@@ -49,23 +54,5 @@ public class FloorArray
     public Person getFromDownQueue(int floor)
     {
         return getFloor(floor).getFromDownQueue();
-    }
-    
-    public int numberOfPeople()
-    {
-        int numberOfPeople = 0;
-        
-        for (int floor = 0; floor < Config.maxFloor; floor++)
-        {
-            Floor currentFloor = floors.get(floor);
-            
-            System.out.println(currentFloor.getUpQueue().getSize());
-            System.out.println(currentFloor.getDownQueue().getSize());
-            
-            numberOfPeople += currentFloor.getUpQueue().getSize();
-            numberOfPeople += currentFloor.getDownQueue().getSize();
-        }
-        
-        return numberOfPeople;
     }
 }

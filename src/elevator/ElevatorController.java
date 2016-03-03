@@ -1,5 +1,7 @@
 package elevator;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dpoumakis
@@ -7,26 +9,32 @@ package elevator;
 public class ElevatorController
 {
     public ElevatorController() {}
-    
+
     public void moveElevator(FloorArray floors, Elevator[] elevators)
-    {   
-        // Start from bottom go to top
-        for (int floor = 0; floor < Config.maxFloor; floor++)
+    {
+        ArrayList<Floor> floorArray = floors.getFloors();
+        
+        for (Elevator elevator : elevators)
         {
-            Floor currentFloor = floors.getFloor(floor);
-            
-            
-            
-            // damn u bug!!!
-            elevators[0].removePeople(floor);
-            
-            
-            while (!currentFloor.isEmpty()) //&& !elevators[0].isFull())
+            for (Floor floor : floorArray)
             {
-                elevators[0].addPerson(currentFloor.getFromUpQueue());
-                elevators[0].addPerson(currentFloor.getFromDownQueue());
+                for (int people = 0; people < 15; people++)
+                {
+                    Person personFromUpQueue = floor.getFromUpQueue();
+                    
+                    // code will occasionally completely crap out
+                    if (personFromUpQueue == null)
+                    {
+                        System.out.println("null");
+                        System.out.println("Floor: " + floor.numberOfPeople());
+                        System.out.println("Elevator: " + elevator.getNumberOfOccupants());
+                    }
+                    else
+                    {
+                        elevator.addPerson(personFromUpQueue);
+                    }
+                }
             }
-            
         }
     }
 }

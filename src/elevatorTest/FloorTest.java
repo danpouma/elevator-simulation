@@ -31,6 +31,7 @@ public class FloorTest
         // Add people to the floor queues and test that they were added
         floor.addPerson(me);
         floor.addPerson(you);
+        
         if (floor.upIsOn() && floor.downIsOn())
         {
             System.out.println("Test: Added to both queues - Pass");

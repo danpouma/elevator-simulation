@@ -6,20 +6,16 @@ package elevator;
  */
 public class Floor
 {
-    // Used by FloorArray
     private int floorNumber;
-    
-    FloorQueue upQueue;
-    FloorQueue downQueue;
-    
-    ElevatorButton upButton;
-    ElevatorButton downButton;
+    private FloorQueue upQueue;
+    private FloorQueue downQueue;
+    private ElevatorButton upButton;
+    private ElevatorButton downButton;
     
     public Floor()
     {
         upQueue = new FloorQueue();
         downQueue = new FloorQueue();
-       
         upButton = new ElevatorButton("Up");
         downButton = new ElevatorButton("Down");
     }
@@ -27,10 +23,8 @@ public class Floor
     public Floor(int floorNumber)
     {
         this.floorNumber = floorNumber;
-        
         upQueue = new FloorQueue();
         downQueue = new FloorQueue();
-       
         upButton = new ElevatorButton("Up");
         downButton = new ElevatorButton("Down");
     }
@@ -47,34 +41,6 @@ public class Floor
             downQueue.enqueue(person);
             downButton.turnOn();
         }
-    }
-    
-    public Person removePerson()
-    {
-        Person person = null;
-        
-        if (upIsOn())
-        {
-            person = upQueue.dequeue();
-            
-            // Check if anyone left to go up
-            if (upQueue.isEmpty())
-            {
-                upButton.turnOff();
-            }
-        }
-        else
-        {
-            person = downQueue.dequeue();
-            
-            // Check if anyone left to go  down
-            if (downQueue.isEmpty())
-            {
-                downButton.turnOff();
-            }
-        }
-        
-        return person;
     }
     
     public Person getFromUpQueue()
@@ -126,11 +92,6 @@ public class Floor
         return floorNumber;
     }
     
-    public void setFloorNumber(int floorNumber)
-    {
-        this.floorNumber = floorNumber;
-    }
-    
     public boolean isEmpty()
     {
         boolean isEmpty = false;
@@ -151,6 +112,16 @@ public class Floor
     public FloorQueue getDownQueue()
     {
         return downQueue;
+    }
+    
+    public void addToUpQueue(Person person)
+    {
+        upQueue.enqueue(person);
+    }
+    
+    public void addToDownQueue(Person person)
+    {
+        // implement this function
     }
     
     public int numberOfPeople()

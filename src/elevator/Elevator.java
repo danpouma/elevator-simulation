@@ -39,16 +39,8 @@ public class Elevator
     {
         people.add(person);
         
-        // hmm button is causing elevator controller test to fail..
-        // the fix for now is to correct the offset by 1.
-        // there is probably other areas impacted by it too.
-        // do a full investigation! may need to re-implemnet person class
-        
-        // This line causes issues. Need to figure it out
-        
-        // fix this shit
-        
-        //buttons.get(person.getStopFloor() - 1).turnOn();
+        // Can cause null pointer exception 
+        buttons.get(person.getStopFloor()).turnOn();
         
         numberOfOccupants++;
     }
@@ -96,50 +88,6 @@ public class Elevator
         {
             peopleRemoved.add(removePerson(floor));
         }
-        
-        /*
-        while (stillRemoving)
-        {
-            for (int person = 0; person < people.size(); person++)
-            {
-                Person currentPerson = people.get(person);
-                
-                
-                int personStopFloor; //= currentPerson.getStopFloor();
-                
-                if (currentPerson.getStopFloor() != int)
-                {
-                    System.out.println("deee");
-                }
-                else
-                {
-                    personStopFloor = currentPerson.getStopFloor();
-                }
-                   
-                
-                if (floor == personStopFloor)
-                {
-                    //peopleRemoved.add(currentPerson);
-                    people.remove(currentPerson);
-                    numberOfOccupants--;
-                }
-            }
-            
-            
-            stillRemoving = false;
-            for (int person = 0; person < people.size(); person++)
-            {
-                Person currentPerson = people.get(person);
-                
-                int personStopFloor = currentPerson.getStopFloor();
-                
-                if (floor == personStopFloor)
-                {
-                    stillRemoving = true;
-                }
-            }
-        }
-                */
         
         return peopleRemoved;
     }

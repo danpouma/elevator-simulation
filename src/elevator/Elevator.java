@@ -45,11 +45,34 @@ public class Elevator
         // do a full investigation! may need to re-implemnet person class
         
         // This line causes issues. Need to figure it out
+        
+        // fix this shit
+        
         //buttons.get(person.getStopFloor() - 1).turnOn();
         
         numberOfOccupants++;
     }
-
+    
+    public Person removePerson(int floor)
+    {
+        Person personRemoved = null;
+        
+        for (int person = 0; person < people.size(); person++)
+        {
+            Person currentPerson = people.get(person);
+            System.out.println(currentPerson.getStopFloor());
+            int currentStopFloor = currentPerson.getStopFloor();
+            
+            if (currentStopFloor == floor)
+            {
+                personRemoved = currentPerson;
+                people.remove(currentPerson);
+            }
+        }
+        
+        return personRemoved;
+    }
+    /*
     public ArrayList<Person> removePeople(int floor)
     {
         boolean stillRemoving = true;
@@ -61,15 +84,27 @@ public class Elevator
             {
                 Person currentPerson = people.get(person);
                 
-                int personStopFloor = currentPerson.getStopFloor();
+                
+                int personStopFloor; //= currentPerson.getStopFloor();
+                
+                if (currentPerson.getStopFloor() != int)
+                {
+                    System.out.println("deee");
+                }
+                else
+                {
+                    personStopFloor = currentPerson.getStopFloor();
+                }
+                   
                 
                 if (floor == personStopFloor)
                 {
-                    peopleRemoved.add(currentPerson);
+                    //peopleRemoved.add(currentPerson);
                     people.remove(currentPerson);
                     numberOfOccupants--;
                 }
             }
+            
             
             stillRemoving = false;
             for (int person = 0; person < people.size(); person++)
@@ -87,7 +122,9 @@ public class Elevator
         
         return peopleRemoved;
     }
+    */
     
+    // Utilize this...
     public boolean isFull()
     {
         return people.size() == capacity;

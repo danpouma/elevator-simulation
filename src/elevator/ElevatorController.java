@@ -1,7 +1,5 @@
 package elevator;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author dpoumakis
@@ -20,7 +18,7 @@ public class ElevatorController
             
             
             // damn u bug!!!
-            elevators[0].removePeople(floor);
+            elevators[0].removePerson(floor);
             
             
             while (!currentFloor.isEmpty()) //&& !elevators[0].isFull())

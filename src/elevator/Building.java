@@ -49,11 +49,13 @@ public class Building
     // Probably could rename to startElevator
     public void moveElevator() //int direction, int id)
     {
+        
         // use controller to move elevator
         // add enums for up, down and none
         
         // Maybe pass elevator id?
         elevatorController.moveElevator(floors, elevators);
+        
     }
     
     public void addPerson(Person person, int floor)

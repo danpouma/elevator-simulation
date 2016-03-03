@@ -75,6 +75,7 @@ public class ElevatorTest
         boolean personRemoved = false;
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
+            // Need to update/fix function
             ArrayList<Person> person = elevator.removePeople(floor);
             if (person.isEmpty())
             {

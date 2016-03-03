@@ -46,20 +46,11 @@ public class BuildingTest
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
             Floor currentFloor = building.getFloors().getFloor(floor);
-            
-            
-            for (int i = 0; i < 10; i++)
-            {
-                building.moveElevator();
-            }
+    
+            building.moveElevator();        
             
             System.out.println("Floor " + floor + ": " + currentFloor.numberOfPeople());
         }
-        
-        
-        String test = "test";
-        
-        test.
         
         
         

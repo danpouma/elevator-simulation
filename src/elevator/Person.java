@@ -12,7 +12,6 @@ public class Person
     
     private int startFloor;
     private int stopFloor;
-    
     private int time;
     
     private int maxFloor;
@@ -77,7 +76,7 @@ public class Person
 
     public int getStopFloor()
     {
-        return stopFloor;
+        return this.stopFloor;
     }
 
     public void setStopFloor(int stopFloor)

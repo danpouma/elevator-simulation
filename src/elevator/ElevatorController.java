@@ -19,7 +19,7 @@ public class ElevatorController
         {
             for (Floor floor : floorArray)
             {
-                for (int people = 0; people < 10; people++)
+                while (!floor.getUpQueue().isEmpty())
                 {
                     Person personFromUpQueue = floor.getFromUpQueue();
 

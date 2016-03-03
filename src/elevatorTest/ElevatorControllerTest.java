@@ -22,7 +22,7 @@ public class ElevatorControllerTest
         
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
-            for (int person = 0; person < 15; person++)
+            for (int person = 0; person < Config.numberOfPeople; person++)
             {
                 floors.addPerson(peopleGen.generatePerson(), floor);
             }
@@ -33,6 +33,17 @@ public class ElevatorControllerTest
         // Was this the null pointer?
         elevators[0] = new Elevator();
         
+        System.out.println(elevators[0].getNumberOfOccupants());
         elevatorController.moveElevator(floors, elevators);
+        System.out.println(elevators[0].getNumberOfOccupants());
+        
+        if (Config.numberOfPeople*Config.maxFloor == elevators[0].getNumberOfOccupants())
+        {
+            System.out.println("pass");
+        }
+        else
+        {
+            System.out.println("fail");
+        }
     }
 }

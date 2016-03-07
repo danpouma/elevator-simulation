@@ -9,6 +9,7 @@ public class Building
     private Elevator[] elevators;
     private ElevatorController elevatorController;
     private FloorArray floors;
+    private PeopleGenerator peopleGen;
     
     public Building()
     {   
@@ -19,6 +20,14 @@ public class Building
         }
         elevatorController = new ElevatorController();
         floors = new FloorArray();
+        peopleGen = new PeopleGenerator();
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            for (int person = 0; person < Config.numberOfPeople; person++)
+            {
+                floors.addPerson(peopleGen.generatePerson(), floor);
+            }
+        }
     }
     
     public FloorArray getFloor()

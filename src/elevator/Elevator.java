@@ -83,7 +83,6 @@ public class Elevator
         boolean stillRemoving = true;
         ArrayList<Person> peopleRemoved = new ArrayList<>();
         
-        System.out.println(floor);
         while (hasPersonGettingOff(floor))
         {
             peopleRemoved.add(removePerson(floor));

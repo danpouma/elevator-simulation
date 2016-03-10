@@ -41,8 +41,5 @@ public class Simulation
        
         
         System.out.println(building.getNumberOfPeople());
-            //Buidling will decide where elevator goes, move it,
-            //get people on & off
-            //decide if you should continue
     }
 }

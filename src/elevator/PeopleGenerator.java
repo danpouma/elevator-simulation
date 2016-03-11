@@ -1,6 +1,5 @@
 package elevator;
 
-import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -23,8 +22,7 @@ public class PeopleGenerator
     
     public Person generatePerson()
     {
-        Random randGen = new Random(System.currentTimeMillis());
-        
+        //Random randGen = new Random(System.currentTimeMillis());
         // create person who will ascend from floor 0 to top floor
         Person person = new Person(0,Config.maxFloor - 1);
         

@@ -36,9 +36,7 @@ public class Simulation
         
         System.out.println(building.getNumberOfPeople());
         
-        
         building.moveElevator();
-       
         
         System.out.println(building.getNumberOfPeople());
     }

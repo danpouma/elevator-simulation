@@ -24,7 +24,7 @@ public class PeopleGenerator
     {
         //Random randGen = new Random(System.currentTimeMillis());
         // create person who will ascend from floor 0 to top floor
-        Person person = new Person(0,Config.maxFloor - 1);
+        Person person = new Person(0, Config.maxFloor - 1);
         
         return person;
     }

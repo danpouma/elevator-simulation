@@ -22,6 +22,8 @@ public class PeopleGenerator
     
     public Person generatePerson()
     {
+        // Need to update variations of people generators
+        
         //Random randGen = new Random(System.currentTimeMillis());
         // create person who will ascend from floor 0 to top floor
         Person person = new Person(0, Config.maxFloor - 1);

@@ -55,4 +55,16 @@ public class FloorArray
     {
         return getFloor(floor).getFromDownQueue();
     }
+    
+    public int getNumberOfPeople()
+    {
+        int numberOfPeople = 0;
+        
+        for (int floor = 0; floor < floors.size(); floor++)
+        {
+            numberOfPeople += floors.get(floor).numberOfPeople();
+        }
+        
+        return numberOfPeople;
+    }
 }

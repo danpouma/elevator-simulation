@@ -21,7 +21,7 @@ See lab help - simulation
 public class Simulation
 {
     public static void main(String[] args)
-    {      
+    {     
         Building building = new Building();
         
         PeopleGenerator peopleGen = new PeopleGenerator();

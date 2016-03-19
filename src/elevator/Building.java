@@ -72,6 +72,6 @@ public class Building
     
     public int getNumberOfPeople()
     {
-        return floors.getNumberOfFloors();
+        return floors.getNumberOfPeople();
     }
 }

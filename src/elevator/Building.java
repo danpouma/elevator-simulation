@@ -6,12 +6,14 @@ package elevator;
  */
 public class Building
 {
+    private int currentFloor;
     private Elevator[] elevators;
     private ElevatorController elevatorController;
     private FloorArray floors;
     
     public Building()
     {   
+        currentFloor = 0;
         elevators = new Elevator[Config.numberOfElevators];
         for (int elevator = 0; elevator < Config.numberOfElevators; elevator++)
         {
@@ -34,6 +36,16 @@ public class Building
     public void moveElevator() 
     {
         elevatorController.moveElevator(floors, elevators);
+    }
+    
+    public void moveElevatorUp()
+    {
+        elevatorController.moveElevatorUp(floors, elevators, currentFloor);
+    }
+    
+    public void moveElevatorDown()
+    {
+        elevatorController.moveElevatorDown(floors, elevators, currentFloor);
     }
     
     public void addPerson(Person person)

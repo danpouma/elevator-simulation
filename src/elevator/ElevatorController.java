@@ -34,4 +34,14 @@ public class ElevatorController
             }
         }
     }
+    
+    public void moveElevatorUp(FloorArray floors, Elevator[] elevators, int currentFloor)
+    {
+        floors.getFloor(currentFloor + 1).getUpQueue();
+    }
+    
+    public void moveElevatorDown(FloorArray floors, Elevator[] elevators, int currentFloor)
+    {
+        floors.getFloor(currentFloor - 1).getDownQueue();
+    }
 }

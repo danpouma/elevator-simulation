@@ -18,6 +18,10 @@ public class Config
     
     public static int numberOfPeople = 30;
     
+    // Could probably use enum, this works for now
+    public static final int UP = 1;
+    public static final int DOWN = 0;
+    
     public void setMaxFloor(int maxFloor)
     {
         Config.maxFloor = maxFloor;

@@ -38,6 +38,22 @@ public class Building
         elevatorController.moveElevator(floors, elevators);
     }
     
+    public void moveElevator(int direction)
+    {
+        if (direction == Config.UP)
+        {
+            moveElevatorUp();
+        }
+        else if (direction == Config.DOWN)
+        {
+            moveElevatorDown();
+        }
+        else
+        {
+            // Do nothing, invalid direction
+        }
+    }
+    
     public void moveElevatorUp()
     {
         currentFloor++;

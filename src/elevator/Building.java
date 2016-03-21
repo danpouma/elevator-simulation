@@ -40,11 +40,13 @@ public class Building
     
     public void moveElevatorUp()
     {
+        currentFloor++;
         elevatorController.moveElevatorUp(floors, elevators, currentFloor);
     }
     
     public void moveElevatorDown()
     {
+        currentFloor--;
         elevatorController.moveElevatorDown(floors, elevators, currentFloor);
     }
     

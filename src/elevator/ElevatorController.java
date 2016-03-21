@@ -37,11 +37,11 @@ public class ElevatorController
     
     public void moveElevatorUp(FloorArray floors, Elevator[] elevators, int currentFloor)
     {
-        floors.getFloor(currentFloor + 1).getUpQueue();
+        floors.getFloor(currentFloor).getUpQueue();
     }
     
     public void moveElevatorDown(FloorArray floors, Elevator[] elevators, int currentFloor)
     {
-        floors.getFloor(currentFloor - 1).getDownQueue();
+        floors.getFloor(currentFloor).getDownQueue();
     }
 }

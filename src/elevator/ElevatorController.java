@@ -37,11 +37,25 @@ public class ElevatorController
     
     public void moveElevatorUp(FloorArray floors, Elevator[] elevators, int currentFloor)
     {
-        floors.getFloor(currentFloor).getUpQueue();
+        Floor floor = floors.getFloor(currentFloor);
+        
+        while (!floor.isEmpty())
+        {
+            Person personFromUpQueue = floor.getFromUpQueue();
+            
+            elevators[0].addPerson(personFromUpQueue);
+        }
     }
     
     public void moveElevatorDown(FloorArray floors, Elevator[] elevators, int currentFloor)
     {
-        floors.getFloor(currentFloor).getDownQueue();
+        Floor floor = floors.getFloor(currentFloor);
+        
+        while (!floor.isEmpty())
+        {
+            Person personFromDownQueue = floor.getFromDownQueue();
+            
+            elevators[0].addPerson(personFromDownQueue);
+        }
     }
 }

@@ -33,24 +33,58 @@ public class Building
         return elevators;
     }
     
+    // Eventually remove this
     public void moveElevator() 
     {
         elevatorController.moveElevator(floors, elevators);
     }
     
+    public void addCurrentFloorToElevator(int direction)
+    {
+        Floor floor = floors.getFloor(currentFloor);
+        
+        if (direction == Config.UP)
+        {
+            while (!floor.isEmpty())
+            {
+                Person personFromUpQueue = floor.getFromUpQueue();
+
+                elevators[0].addPerson(personFromUpQueue);
+            }
+        }
+        else if (direction == Config.DOWN)
+        {
+            while (!floor.isEmpty())
+            {
+                Person personFromDownQueue = floor.getFromDownQueue();
+
+                elevators[0].addPerson(personFromDownQueue);
+            }
+            floor.getFromDownQueue();
+        }
+        else
+        {
+            // Do nothing
+        }
+    }
+    
     public void moveElevator(int direction)
     {
-        if (direction == Config.UP)
+        // Get people from current floor before moving
+        addCurrentFloorToElevator(direction);
+        
+        if (direction == Config.UP && currentFloor < Config.maxFloor-1)
         {
             moveElevatorUp();
         }
-        else if (direction == Config.DOWN)
+        else if (direction == Config.DOWN && currentFloor >= 1)
         {
             moveElevatorDown();
         }
         else
         {
             // Do nothing, invalid direction
+            System.out.println("nothing");
         }
     }
     

@@ -36,7 +36,10 @@ public class Simulation
         
         System.out.println(building.getNumberOfPeople());
         
-        building.moveElevator();
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            building.moveElevator(Config.UP);
+        }
         
         System.out.println(building.getNumberOfPeople());
     }

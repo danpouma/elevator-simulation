@@ -229,11 +229,14 @@ public class ConfigGui
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                /*
-                Double check the placement of these....!!!
-                */
-                msgMaxFloor.setText("Max floor--> " + Config.maxFloor);
-                msgCapacity.setText("Elevator capacity --> " + Config.elevatorCapacity);
+                Simulation simulation = new Simulation();
+                
+                simulation.generatePeople();
+                
+                msgMaxFloor.setText("Number of people at start: " + simulation.numberOfPeople());
+                simulation.moveElevatorTest();
+                msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
+                
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
                 statusLabel.setText("You pushed the button.");

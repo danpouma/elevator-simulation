@@ -20,12 +20,17 @@ See lab help - simulation
  */
 public class Simulation
 {
-    public static void main(String[] args)
-    {     
-        Building building = new Building();
-        
-        PeopleGenerator peopleGen = new PeopleGenerator();
-        
+    private Building building;
+    private PeopleGenerator peopleGen;
+    
+    public Simulation()
+    {
+        building = new Building();
+        peopleGen = new PeopleGenerator();
+    }
+    
+    public void generatePeople()
+    {
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
             for (int person = 0; person < Config.numberOfPeople; person++)
@@ -33,14 +38,18 @@ public class Simulation
                 building.addPerson(peopleGen.generatePerson(), floor);
             }
         }
-        
-        System.out.println(building.getNumberOfPeople());
-        
+    }
+    
+    public int numberOfPeople()
+    {
+        return building.getNumberOfPeople();
+    }
+    
+    public void moveElevatorTest()
+    {
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
             building.moveElevator(Config.UP);
         }
-        
-        System.out.println(building.getNumberOfPeople());
     }
 }

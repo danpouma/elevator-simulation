@@ -84,7 +84,6 @@ public class Building
         else
         {
             // Do nothing, invalid direction
-            System.out.println("nothing");
         }
     }
     

@@ -7,7 +7,6 @@ package elevator;
  */
 public class Person
 {
-    // Make id constant
     private final int id;
     
     private int startFloor;
@@ -19,12 +18,10 @@ public class Person
     private boolean goingUp;
     private boolean goingDown;
     
-    // Is it ok to declare 0 here? double check
     private static int counter = 0;
 
     public Person()
     {   
-        // is this id working correctly
         this.id = counter++;
         this.maxFloor = Config.maxFloor;
         this.goingDown = false;
@@ -156,7 +153,6 @@ public class Person
     @Override
     public String toString()
     {
-        // make this type casted?
         return id + "";
     }
 }

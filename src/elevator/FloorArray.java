@@ -15,7 +15,6 @@ public class FloorArray
         floors = new ArrayList<>();
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
-            // Could add id for each floor? Floor(floor) 
             floors.add(new Floor(floor));
         }   
     }

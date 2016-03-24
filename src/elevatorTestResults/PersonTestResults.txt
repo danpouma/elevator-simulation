@@ -1,12 +1,12 @@
 Start floor: 1
 Stop floor: 6
 ID: 0
-Is going up...No
+Is going up...Yes
 Is going down...No
 ***************
 Start floor: 1
 Stop floor: 6
 ID: 1
-Is going up...No
+Is going up...Yes
 Is going down...No
 ***************

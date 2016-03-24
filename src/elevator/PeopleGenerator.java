@@ -1,5 +1,9 @@
 package elevator;
 
+/*
+TODO:
+-Make different types of generators
+*/
 import java.util.Stack;
 
 /**

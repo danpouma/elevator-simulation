@@ -1,0 +1,10 @@
+Floor 0: 534
+Floor 1: 496
+Floor 2: 514
+Floor 3: 483
+Floor 4: 478
+Floor 5: 480
+Floor 6: 514
+Floor 7: 491
+Floor 8: 517
+Floor 9: 508

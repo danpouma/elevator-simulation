@@ -176,7 +176,7 @@ public class ConfigGui
     // will be stored.
     private void showSimulation()
     {
-        final Frame frame = new Frame("This will eventually run simulation");
+        final Frame frame = new Frame("Elevator Simulation!!!");
         frame.setSize(400, 300);
         frame.setLayout(new FlowLayout());
         

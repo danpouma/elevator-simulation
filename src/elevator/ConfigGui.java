@@ -24,7 +24,10 @@ public class ConfigGui
 
     private Label statusLabel;
     private Panel controlPanel;
-   
+    
+    
+    private static int numberOfRuns = 0;
+    
     public ConfigGui()
     {
         // For two notes... Planning to split constructor
@@ -239,7 +242,7 @@ public class ConfigGui
                 
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
-                statusLabel.setText("You pushed the button.");
+                statusLabel.setText("Number of runs: " + numberOfRuns++);
                 frame.setVisible(true);
             }
         });

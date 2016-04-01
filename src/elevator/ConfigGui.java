@@ -21,6 +21,7 @@ public class ConfigGui
     private TextField capacityLabel;
     private TextField maxFloorLabel;
     private TextField elevatorsLabel;
+    private TextField peopleLabel;
 
     private Label statusLabel;
     private Panel controlPanel;
@@ -42,6 +43,7 @@ public class ConfigGui
         initializeMaxFloor();
         initializeCapacity();
         initialzeNumberOfElevators();
+        initialzeNumberOfPeople();
         initializeStatus();
         initializeControlPanel();
     }
@@ -49,7 +51,7 @@ public class ConfigGui
     private void initializeMainFrame()
     {
         mainFrame = new Frame("Elevator Simulation!");
-        mainFrame.setSize(500, 400);
+        mainFrame.setSize(500, 500);
         mainFrame.setResizable(false);
         // Keep window center when created
         mainFrame.setLocationRelativeTo(null);
@@ -154,6 +156,34 @@ public class ConfigGui
         configPanel.add(elevatorsButton);
     }
     
+    private void initialzeNumberOfPeople()
+    {
+        // Number of elevators...
+        peopleLabel = new TextField("Enter number of number...");
+        //headerLabel.setAlignment(Label.CENTER);
+        peopleLabel.setSize(250, 100);
+        Button peopleButton = new Button("button for # of people");
+        peopleButton.setSize(10, 10);
+        peopleButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("elevators button pressed...");
+                System.out.println(peopleLabel.getText());
+                
+                // Will need to verify input
+                Config.numberOfPeople = Integer.parseInt(peopleLabel.getText());
+                System.out.println(Config.numberOfPeople);
+                // Maybe make this a message saying if the 
+                // simulation was successful or not, figure it out. 
+                //frame.setVisible(true);
+            }
+        });
+
+        configPanel.add(peopleLabel);
+        configPanel.add(peopleButton);
+    }
     private void initializeStatus()
     {
         statusLabel = new Label();

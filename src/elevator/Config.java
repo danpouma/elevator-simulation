@@ -3,42 +3,38 @@ package elevator;
 /**
  *
  * @author dpoumakis
- * @date 2/8/2016
  */
 public class Config
 {
-    // rename this to numberOfFloors
+    public static final int UP = 1;
+    
+    public static final int DOWN = 0;
+    
     public static int maxFloor = 10;
     
-    // Add this into the config gui
     public static int numberOfElevators = 1;
     
-    // Making high number for testing purposes
     public static int elevatorCapacity = 10;
     
     public static int numberOfPeople = 30;
     
-    // Could probably use enum, this works for now
-    public static final int UP = 1;
-    public static final int DOWN = 0;
-    
-    public void setMaxFloor(int maxFloor)
+    public static void setMaxFloor(int maxFloor)
     {
         Config.maxFloor = maxFloor;
     }
     
-    public int getMaxFloor()
+    public static void setNumberOfElevators(int numberOfElevators)
     {
-        return Config.maxFloor;
+        Config.numberOfElevators = numberOfElevators;
     }
     
-    public void setElevatorCapacity(int capacity)
+    public static void setElevatorCapacity(int capacity)
     {
         Config.elevatorCapacity = capacity;
     }
     
-    public int getElevatorCapacity()
+    public static void setNumberOfPeople(int numberOfPeople)
     {
-        return Config.elevatorCapacity;
+        Config.numberOfPeople = numberOfPeople;
     }
 }

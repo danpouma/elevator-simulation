@@ -87,7 +87,7 @@ public class ConfigGui
                 System.out.println(maxFloorLabel.getText());
                 
                 // Will need to verify input 
-                Config.maxFloor = Integer.parseInt(maxFloorLabel.getText());
+                Config.setMaxFloor(Integer.parseInt(maxFloorLabel.getText()));
                 System.out.println(Config.maxFloor);
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
@@ -115,7 +115,7 @@ public class ConfigGui
                 System.out.println(capacityLabel.getText());
                 
                 // Will need to verify input
-                Config.elevatorCapacity = Integer.parseInt(capacityLabel.getText());
+                Config.setElevatorCapacity(Integer.parseInt(capacityLabel.getText()));
                 System.out.println(Config.elevatorCapacity);
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
@@ -144,7 +144,7 @@ public class ConfigGui
                 System.out.println(elevatorsLabel.getText());
                 
                 // Will need to verify input
-                Config.numberOfElevators = Integer.parseInt(elevatorsLabel.getText());
+                Config.setNumberOfElevators(Integer.parseInt(elevatorsLabel.getText()));
                 System.out.println(Config.numberOfElevators);
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
@@ -173,7 +173,7 @@ public class ConfigGui
                 System.out.println(peopleLabel.getText());
                 
                 // Will need to verify input
-                Config.numberOfPeople = Integer.parseInt(peopleLabel.getText());
+                Config.setNumberOfPeople(Integer.parseInt(peopleLabel.getText()));
                 System.out.println(Config.numberOfPeople);
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 

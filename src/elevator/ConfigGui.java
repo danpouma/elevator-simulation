@@ -30,34 +30,29 @@ public class ConfigGui
     
     public ConfigGui()
     {
-        // For two notes... Planning to split constructor
-        // into multiple functions rather than just "prepareGUI"
-        prepareGUI();
-        
-        // Moved this from main function, makes more sense for it to be here
-        // will properly move it next time
+        init();
+        populateMainFrame();
         showSimulation();
     }
-
-
-
-    // Considerring to split this up into multiple functions
-    private void prepareGUI()
+    
+    private void init()
+    {
+        initializeMainFrame();
+        initializeConfigPanel();
+        initializeMaxFloor();
+        initializeCapacity();
+        initialzeNumberOfElevators();
+        initializeStatus();
+        initializeControlPanel();
+    }
+    
+    private void initializeMainFrame()
     {
         mainFrame = new Frame("Elevator Simulation!");
-        // Might be able to remove this since min dimension is set!
         mainFrame.setSize(500, 400);
-        // Don't let user resize the window
-        // Why does this cause the window to drop to bottom????
-        // just make min size and max size until i find fix...
         mainFrame.setResizable(false);
-        
-        // Temp fix for setResizable dropping window to bottom
-        // this should put window to center
+        // Keep window center when created
         mainFrame.setLocationRelativeTo(null);
-
-        // Does this mean 3 rows? So each add is a row?
-        // how can i add to column?
         mainFrame.setLayout(new GridLayout(3, 2));
         mainFrame.addWindowListener(new WindowAdapter()
         {
@@ -67,15 +62,16 @@ public class ConfigGui
                 System.exit(0);
             }
         });
+    }
 
-        //controlPanel.add(headerLabel);
-        
-        // START CODE FOR CONFIG PANEL ********
-        //*************************************
+    private void initializeConfigPanel()
+    {
         configPanel = new Panel();
-        configPanel.setLayout(new FlowLayout()); // horiztonal, vert
-
-        // Max floor...
+        configPanel.setLayout(new FlowLayout());
+    }
+    
+    private void initializeMaxFloor()
+    {
         maxFloorLabel = new TextField("Enter max floor of building...");
         maxFloorLabel.setSize(250, 100);
         Button maxFloorButton = new Button("button for max floor");
@@ -99,8 +95,10 @@ public class ConfigGui
 
         configPanel.add(maxFloorLabel);
         configPanel.add(maxFloorButton);
-
-        // Capacity...
+    }
+    
+    private void initializeCapacity()
+    {
         capacityLabel = new TextField("Enter capacity of elevator...");
         //headerLabel.setAlignment(Label.CENTER);
         capacityLabel.setSize(250, 100);
@@ -125,7 +123,10 @@ public class ConfigGui
 
         configPanel.add(capacityLabel);
         configPanel.add(capacityButton);
-        
+    }
+    
+    private void initialzeNumberOfElevators()
+    {
         // Number of elevators...
         elevatorsLabel = new TextField("Enter number of elevators...");
         //headerLabel.setAlignment(Label.CENTER);
@@ -151,29 +152,30 @@ public class ConfigGui
 
         configPanel.add(elevatorsLabel);
         configPanel.add(elevatorsButton);
-
-        // END CODE FOR CONFIG PANEL **********
-        //*************************************
+    }
+    
+    private void initializeStatus()
+    {
         statusLabel = new Label();
         statusLabel.setAlignment(Label.CENTER);
         statusLabel.setSize(350, 100);
-
-       
-
+    }
+    
+    private void initializeControlPanel()
+    {
         controlPanel = new Panel();
         controlPanel.setLayout(new FlowLayout());
-
-        // Should I set a background color?? hmmm
-        // could just be a fun capability for final program
-        // user preference. Maybe store prefs? A prefs file
-        //mainFrame.setBackground(Color.blue);
-        //mainFrame.add(headerLabel);
+    }
+    
+    private void populateMainFrame()
+    {
         mainFrame.add(configPanel);
 
         mainFrame.add(controlPanel);
         mainFrame.add(statusLabel);
         mainFrame.setVisible(true);
     }
+
 
     // This method will be where the code that powers the simulation
     // will be stored.

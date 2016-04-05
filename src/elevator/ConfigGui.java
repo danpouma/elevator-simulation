@@ -241,7 +241,7 @@ public class ConfigGui
     // will be stored.
     private void showSimulation()
     {
-        final Frame frame = new Frame("Elevator Simulation!!!");
+        Frame frame = new Frame("Elevator Simulation!!!");
         frame.setSize(400, 300);
         frame.setLayout(new FlowLayout());
         
@@ -293,21 +293,32 @@ public class ConfigGui
         {
             @Override
             public void actionPerformed(ActionEvent e)
-            {
+            {   
+                frame.setVisible(true);
                 Simulation simulation = new Simulation();
                 
                 simulation.generatePeople();
                 
                 msgMaxFloor.setText("Number of people at start: " + simulation.numberOfPeople());
-                simulation.moveElevatorTest();
+                
+               
+                simulation.moveElevatorUp();
+                simulation.moveElevatorDown();
+                
                 msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
+                
+                
+                
+                
+                //msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
                 
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
                 statusLabel.setText("Number of runs: " + numberOfRuns++);
-                frame.setVisible(true);
+                
             }
         });
+        
         controlPanel.add(launchSimulationButton);
 
         mainFrame.setVisible(true);

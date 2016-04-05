@@ -32,16 +32,17 @@ public class Simulation
         return building.getNumberOfPeople();
     }
     
-    public void moveElevatorTest()
+    public void moveElevatorUp()
     {
-        for (int floor = 0; floor < Config.maxFloor; floor++)
-        {
-            building.moveElevator(Config.UP);
-        }
+        building.moveElevator(Config.UP);
         
-        for (int floor = Config.maxFloor - 1; floor >= 0; floor--)
-        {
-            building.moveElevator(Config.DOWN);
-        }
+        
+        
+    }
+    
+    public void moveElevatorDown()
+    {
+        building.moveElevator(Config.DOWN);
+        
     }
 }

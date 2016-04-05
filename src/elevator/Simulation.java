@@ -23,6 +23,7 @@ public class Simulation
             {
                 building.addPerson(peopleGen.generatePerson(), floor);
             }
+            
         }
     }
     
@@ -36,6 +37,11 @@ public class Simulation
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
             building.moveElevator(Config.UP);
+        }
+        
+        for (int floor = Config.maxFloor - 1; floor >= 0; floor--)
+        {
+            building.moveElevator(Config.DOWN);
         }
     }
 }

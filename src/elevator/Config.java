@@ -18,6 +18,8 @@ public class Config
     
     public static int numberOfPeople = 30;
     
+    public static int assentType = 0;
+    
     public static void setMaxFloor(int maxFloor)
     {
         Config.maxFloor = maxFloor;
@@ -36,5 +38,10 @@ public class Config
     public static void setNumberOfPeople(int numberOfPeople)
     {
         Config.numberOfPeople = numberOfPeople;
+    }
+    
+    public static void setAssentType(int assentType)
+    {
+        Config.assentType = assentType;
     }
 }

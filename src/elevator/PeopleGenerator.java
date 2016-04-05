@@ -4,6 +4,7 @@ package elevator;
 TODO:
 -Make different types of generators
 */
+import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -26,11 +27,50 @@ public class PeopleGenerator
     
     public Person generatePerson()
     {
-        // Need to update variations of people generators
+        Person person = null;
         
-        //Random randGen = new Random(System.currentTimeMillis());
+        Random randGen = new Random(System.currentTimeMillis());
         // create person who will ascend from floor 0 to top floor
-        Person person = new Person(0, Config.maxFloor - 1);
+        
+        // Bottom to up
+        if (Config.assentType == 0)
+        {
+            person = new Person(0, Config.maxFloor - 1);
+        }
+        // Top to down
+        else if (Config.assentType == 1)
+        {
+            person = new Person(Config.maxFloor - 1, 0);
+        }
+        // Random
+        else if (Config.assentType == 2)
+        {
+            int randomStart;
+            int randomStop;
+            boolean valid = false;
+            
+            do
+            {
+                randomStart = randGen.nextInt(9);
+                randomStop = randGen.nextInt(9);
+                
+                if (randomStart != randomStop)
+                {
+                    valid = true;
+                }
+                else
+                {
+                    valid = false;
+                }
+            } while (!valid);
+            
+            person = new Person(randomStart, randomStop);
+        }
+        else
+        {
+            // Do nothing
+        }
+        
         
         return person;
     }

@@ -39,7 +39,7 @@ public class ElevatorController
     {
         Floor floor = floors.getFloor(currentFloor);
         
-        while (!floor.isEmpty())
+        while (!floor.getUpQueue().isEmpty())
         {
             Person personFromUpQueue = floor.getFromUpQueue();
             
@@ -51,7 +51,7 @@ public class ElevatorController
     {
         Floor floor = floors.getFloor(currentFloor);
         
-        while (!floor.isEmpty())
+        while (!floor.getDownQueue().isEmpty())
         {
             Person personFromDownQueue = floor.getFromDownQueue();
             

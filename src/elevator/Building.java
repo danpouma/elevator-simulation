@@ -45,7 +45,7 @@ public class Building
         
         if (direction == Config.UP)
         {
-            while (!floor.isEmpty())
+            while (!floor.getUpQueue().isEmpty())
             {
                 Person personFromUpQueue = floor.getFromUpQueue();
 
@@ -54,7 +54,7 @@ public class Building
         }
         else if (direction == Config.DOWN)
         {
-            while (!floor.isEmpty())
+            while (!floor.getDownQueue().isEmpty())
             {
                 Person personFromDownQueue = floor.getFromDownQueue();
 

@@ -22,6 +22,7 @@ public class ConfigGui
     private TextField maxFloorLabel;
     private TextField elevatorsLabel;
     private TextField peopleLabel;
+    private TextField assentTypeLabel;
 
     private Label statusLabel;
     private Panel controlPanel;
@@ -44,6 +45,7 @@ public class ConfigGui
         initializeCapacity();
         initialzeNumberOfElevators();
         initialzeNumberOfPeople();
+        initializeAssentType();
         initializeStatus();
         initializeControlPanel();
     }
@@ -51,7 +53,7 @@ public class ConfigGui
     private void initializeMainFrame()
     {
         mainFrame = new Frame("Elevator Simulation!");
-        mainFrame.setSize(500, 500);
+        mainFrame.setSize(500, 550);
         mainFrame.setResizable(false);
         // Keep window center when created
         mainFrame.setLocationRelativeTo(null);
@@ -184,6 +186,34 @@ public class ConfigGui
         configPanel.add(peopleLabel);
         configPanel.add(peopleButton);
     }
+    
+    private void initializeAssentType()
+    {
+        assentTypeLabel = new TextField("Enter assent type...");
+        assentTypeLabel.setSize(250, 100);
+        Button assentTypeButton = new Button("button for assent type");
+        assentTypeButton.setSize(10, 10);
+        assentTypeButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println("assent type button pressed...");
+                System.out.println(assentTypeLabel.getText());
+                
+                // Will need to verify input 
+                Config.setAssentType(Integer.parseInt(assentTypeLabel.getText()));
+                System.out.println(Config.assentType);
+                // Maybe make this a message saying if the 
+                // simulation was successful or not, figure it out. 
+                //frame.setVisible(true);
+            }
+        });
+
+        configPanel.add(assentTypeLabel);
+        configPanel.add(assentTypeButton);
+    }
+    
     private void initializeStatus()
     {
         statusLabel = new Label();

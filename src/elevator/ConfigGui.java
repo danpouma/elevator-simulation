@@ -301,9 +301,15 @@ public class ConfigGui
                 
                 msgMaxFloor.setText("Number of people at start: " + simulation.numberOfPeople());
                 
-               
-                simulation.moveElevatorUp();
-                simulation.moveElevatorDown();
+                for (int floor = 0; floor < Config.maxFloor; floor++)
+                {
+                    simulation.moveElevatorUp();
+                }
+                
+                for (int floor = 0; floor < Config.maxFloor; floor++)
+                {
+                    simulation.moveElevatorDown();
+                }
                 
                 msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
                 

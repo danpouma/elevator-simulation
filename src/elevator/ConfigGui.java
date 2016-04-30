@@ -295,27 +295,9 @@ public class ConfigGui
             public void actionPerformed(ActionEvent e)
             {   
                 frame.setVisible(true);
-                Simulation simulation = new Simulation();
                 
-                simulation.generatePeople();
-                
-                msgMaxFloor.setText("Number of people at start: " + simulation.numberOfPeople());
-                
-                for (int floor = 0; floor < Config.maxFloor; floor++)
-                {
-                    simulation.moveElevatorUp();
-                }
-                
-                for (int floor = 0; floor < Config.maxFloor; floor++)
-                {
-                    simulation.moveElevatorDown();
-                }
-                
-                msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
-                
-                
-                
-                
+                // Pass sim type 0, use config eventually
+                Simulation simulation = new Simulation(0);
                 //msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
                 
                 // Maybe make this a message saying if the 

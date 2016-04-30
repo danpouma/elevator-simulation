@@ -15,6 +15,26 @@ public class Simulation
         peopleGen = new PeopleGenerator();
     }
     
+    public Simulation(int type)
+    {
+        building = new Building();
+        peopleGen = new PeopleGenerator();
+        peopleGen.generatePeople();
+        if (type == 0)
+        {
+            for (int floor = 0; floor < Config.maxFloor; floor++)
+            {
+                moveElevatorUp();
+            }
+
+            for (int floor = 0; floor < Config.maxFloor; floor++)
+            {
+                moveElevatorDown();
+            }
+        }
+        
+    }
+    
     public void generatePeople()
     {
         for (int floor = 0; floor < Config.maxFloor; floor++)
@@ -22,8 +42,7 @@ public class Simulation
             for (int person = 0; person < Config.numberOfPeople; person++)
             {
                 building.addPerson(peopleGen.generatePerson(), floor);
-            }
-            
+            }            
         }
     }
     
@@ -34,10 +53,7 @@ public class Simulation
     
     public void moveElevatorUp()
     {
-        building.moveElevator(Config.UP);
-        
-        
-        
+        building.moveElevator(Config.UP);   
     }
     
     public void moveElevatorDown()

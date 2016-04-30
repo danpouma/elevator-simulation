@@ -71,20 +71,28 @@ public class Building
     public void moveElevator(int direction)
     {
         // Get people from current floor before moving
-        addCurrentFloorToElevator(direction);
+        if (elevators[0].getNumberOfOccupants() < Config.elevatorCapacity )
+        {
+            addCurrentFloorToElevator(direction);
         
-        if (direction == Config.UP && currentFloor < Config.maxFloor-1)
-        {
-            moveElevatorUp();
-        }
-        else if (direction == Config.DOWN && currentFloor >= 1)
-        {
-            moveElevatorDown();
+            if (direction == Config.UP && currentFloor < Config.maxFloor-1)
+            {
+                moveElevatorUp();
+            }
+            else if (direction == Config.DOWN && currentFloor >= 1)
+            {
+                moveElevatorDown();
+            }
+            else
+            {
+                // Do nothing, invalid direction
+            }
         }
         else
         {
-            // Do nothing, invalid direction
+            // Do nothing
         }
+
     }
     
     public void moveElevatorUp()

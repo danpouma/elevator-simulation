@@ -41,9 +41,17 @@ public class ElevatorController
         
         while (!floor.getUpQueue().isEmpty())
         {
-            Person personFromUpQueue = floor.getFromUpQueue();
+            if ( elevators[0].getNumberOfOccupants() < Config.numberOfPeople )
+            {
+                Person personFromUpQueue = floor.getFromUpQueue();
             
-            elevators[0].addPerson(personFromUpQueue);
+                elevators[0].addPerson(personFromUpQueue);
+            }
+            else
+            {
+                // Do nothing
+            }
+            
         }
     }
     
@@ -53,9 +61,17 @@ public class ElevatorController
         
         while (!floor.getDownQueue().isEmpty())
         {
-            Person personFromDownQueue = floor.getFromDownQueue();
+            if ( elevators[0].getNumberOfOccupants() < Config.elevatorCapacity )
+            {
+                Person personFromDownQueue = floor.getFromDownQueue();
             
-            elevators[0].addPerson(personFromDownQueue);
+                elevators[0].addPerson(personFromDownQueue);
+            }
+            else
+            {
+                // Do nothing
+            }
+            
         }
     }
 }

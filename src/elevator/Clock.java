@@ -8,7 +8,7 @@ package elevator;
 public class Clock extends Thread
 {
 
-    private int ticks;
+    static private int ticks;
     private boolean isTicking;
 
     public Clock()
@@ -27,9 +27,9 @@ public class Clock extends Thread
         ticks = 0;
     }
 
-    public int getTicks()
+    public static int getTicks()
     {
-        return this.ticks;
+        return Clock.ticks;
     }
 
     @Override

@@ -37,12 +37,20 @@ public class Elevator
 
     public void addPerson(Person person)
     {
-        people.add(person);
+        if ( people.size() < Config.elevatorCapacity )
+        {
+            people.add(person);
         
-        // Can cause null pointer exception 
-        buttons.get(person.getStopFloor()).turnOn();
+            // Can cause null pointer exception 
+            buttons.get(person.getStopFloor()).turnOn();
+
+            numberOfOccupants++;
+        }
+        else
+        {
+            // Do nothing
+        }
         
-        numberOfOccupants++;
     }
     
     public boolean hasPersonGettingOff(int floor)

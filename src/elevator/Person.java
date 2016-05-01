@@ -3,70 +3,48 @@ package elevator;
 /**
  *
  * @author dpoumakis
- * @date 2/8/2016
  */
 public class Person
 {
-    private final int id;
-    
     private int startFloor;
     private int stopFloor;
-    private int time;
-    
-    private int maxFloor;
-    
-    private boolean goingUp;
-    private boolean goingDown;
-    
-    private static int counter = 0;
+    private int startTime;
+    private int stopTime;
+
+    private final int id;
+    private static int idGenerator = 0;
 
     public Person()
-    {   
-        this.id = counter++;
-        this.maxFloor = Config.maxFloor;
-        this.goingDown = false;
-        this.goingUp = false;
-        startFloor = 0;
-        stopFloor = 0;
-    }
-    
-    public Person(int startFloor) 
     {
-        this.id = counter++;
-        this.startFloor = startFloor;
-        this.goingDown = false;
-        this.goingUp = false;
-        stopFloor = 0;
+        startFloor = 0;
+        startTime = 0;
+        stopTime = 0;
+
+        id = idGenerator++;
     }
 
-    // Can automate which direction they're going via this function!
-    public Person(int startFloor, int stopFloor) 
+    public Person(int startFloor)
     {
-        this.id = counter++;
+        this.startFloor = startFloor;
+        startTime = 0;
+        stopTime = 0;
+
+        id = idGenerator++;
+    }
+
+    public Person(int startFloor, int stopFloor)
+    {
         this.startFloor = startFloor;
         this.stopFloor = stopFloor;
-        
-        if (startFloor < stopFloor)
-        {
-            goingUp = true;
-            goingDown = false;
-        }
-        else
-        {
-            goingDown = true;
-            goingUp = false;
-        }
-        
+        startTime = 0;
+        stopTime = 0;
+
+        id = idGenerator++;
     }
 
-    public int getId()
+    public static int getIdGenerator()
     {
-        return id;
-    }
-
-    public int getStartFloor()
-    {
-        return startFloor;
+        return idGenerator;
     }
 
     public void setStartFloor(int startFloor)
@@ -74,9 +52,9 @@ public class Person
         this.startFloor = startFloor;
     }
 
-    public int getStopFloor()
+    public int getStartFloor()
     {
-        return this.stopFloor;
+        return this.startFloor;
     }
 
     public void setStopFloor(int stopFloor)
@@ -84,75 +62,63 @@ public class Person
         this.stopFloor = stopFloor;
     }
 
-    public int getTime()
+    public int getStopFloor()
     {
-        return time;
+        return this.stopFloor;
     }
 
-    public void setTime(int time)
+    public int getStartTime()
     {
-        this.time = time;
+        return this.startTime;
     }
 
-    public int getMaxFloor()
+    public void setStartTime(int startTime)
     {
-        return maxFloor;
+        this.startTime = startTime;
     }
 
-    public void setMaxFloor(int maxFloor)
+    public int getStopTime()
     {
-        this.maxFloor = maxFloor;
+        return this.stopTime;
+    }
+
+    public void setStopTime(int stopTime)
+    {
+        this.stopTime = stopTime;
+    }
+
+    public int getId()
+    {
+        return this.id;
     }
 
     public boolean isGoingUp()
     {
-        // Add automation for check up
-        if (startFloor == stopFloor)
+        boolean isGoingUp = true;
+
+        if (stopFloor < startFloor)
         {
-            System.out.println("yo that shit is equal");
-        }
-        else if (startFloor < stopFloor)
+            isGoingUp = false;
+        } 
+        else if (startFloor == stopFloor)
         {
-            goingUp = true;
-            goingDown = false;
+            // Should be getting off
         }
         else
         {
-            goingUp = false;
-            goingDown = true;
+            // Do nothing
         }
-        return goingUp;
+        return isGoingUp;
     }
 
-    public void setGoingUp(boolean goingUp)
+    public int getTotalTime()
     {
-        this.goingUp = goingUp;
+        return this.stopTime - this.startTime;
     }
 
-    public boolean isGoingDown()
-    {
-        // Add automation for check down
-        if (startFloor < stopFloor)
-        {
-            goingUp = true;
-            goingDown = false;
-        }
-        else
-        {
-            goingUp = false;
-            goingDown = true;
-        }
-        return goingDown;
-    }
-
-    public void setGoingDown(boolean goingDown)
-    {
-        this.goingDown = goingDown;
-    }
-    
     @Override
     public String toString()
     {
-        return id + "";
+        return "Person{" + "id=" + id + '}';
     }
 }

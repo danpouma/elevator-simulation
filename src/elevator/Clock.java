@@ -3,13 +3,12 @@ package elevator;
 /**
  *
  * @author dpoumakis
- * @date 2/8/2016
  */
 public class Clock extends Thread
 {
 
-    static private int ticks;
-    private boolean isTicking;
+    static int ticks;
+    static boolean isTicking;
 
     public Clock()
     {
@@ -17,19 +16,14 @@ public class Clock extends Thread
         isTicking = false;
     }
 
-    public void tick()
+    public static void tick()
     {
         ticks++;
     }
-
-    public void reset()
-    {
-        ticks = 0;
-    }
-
+    
     public static int getTicks()
     {
-        return Clock.ticks;
+        return ticks;
     }
 
     @Override
@@ -46,12 +40,11 @@ public class Clock extends Thread
                     Thread.sleep(1000);
                     tick();
                 }
-            } 
-            catch (Exception e)
+            } catch (InterruptedException e)
             {
                 isTicking = false;
             }
-            System.out.println(getTicks());
+            System.out.println(Clock.getTicks());
         }
     }
 }

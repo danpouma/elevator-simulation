@@ -1,178 +1,186 @@
 package elevator;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
- *
+ * 
  * @author dpoumakis
  */
 public class Elevator
 {
-    private final int id;
     private int capacity;
-    private int currentFloor;
-    ArrayList<Person> people;
-    ArrayList<ElevatorButton> buttons;
+    private int currentFloor;   
+    private int numberOfPeople;
+    private ElevatorButton[] buttons;
+    private LinkedList<Person>[] destinations;
     
-    private static int counter = 0;
-    
-    // Variable for testing number of people on the elevator.
-    private int numberOfOccupants;
-    
+    // Elevator id
+    private final int id;
+    private static int idGenerator = 0;
+
     public Elevator()
     {
-        // Test variable..
-        numberOfOccupants = 0;
-        
-        id = counter++;
+        id = idGenerator++;
         capacity = Config.elevatorCapacity;
         currentFloor = 0;
-        people = new ArrayList<>();
-        buttons = new ArrayList<>();
-        for (int i = 1; i <= Config.maxFloor; i++)
+        numberOfPeople = 0;
+        buttons = new ElevatorButton[Config.maxFloor];
+        destinations = new LinkedList[Config.maxFloor];
+        for (int i = 0; i < Config.maxFloor; i++)
         {
-            buttons.add(new ElevatorButton(i + ""));
-        }
+            destinations[i] = new LinkedList<Person>();
+            buttons[i] = new ElevatorButton(i + "");
+        }        
+        manageButtons();
     }
-
+    
     public void addPerson(Person person)
     {
-        if ( people.size() < Config.elevatorCapacity )
+        try
         {
-            people.add(person);
-        
-            // Can cause null pointer exception 
-            buttons.get(person.getStopFloor()).turnOn();
 
-            numberOfOccupants++;
-        }
-        else
+            destinations[person.getStopFloor()].add(person);
+            numberOfPeople++;
+            
+        } catch (Exception e)
         {
-            // Do nothing
+            System.out.println("Error in adding person");
         }
-        
+        manageButtons();
     }
     
-    public boolean hasPersonGettingOff(int floor)
+    public Person removePerson()
     {
-        boolean hasPersonGettingOff = false;
+        Person person = null;
         
-        for (Person person : people)
+        try
         {
-            if (person.getStopFloor() == floor)
+            person = destinations[currentFloor].removeLast();
+            numberOfPeople--;
+
+        } 
+        catch (Exception e)
+        {
+            System.out.println("error in removing person");
+        }
+        manageButtons();
+        if (person != null)
+        {
+            person.setStopTime(Clock.getTicks());
+        }
+
+        return person;
+    }
+    
+    private void manageButtons()
+    {
+        for (int i = 0; i < Config.maxFloor; i++)
+        {
+            if (destinations[i].isEmpty())
             {
-                hasPersonGettingOff = true;
+                buttons[i].setOn(false);
+            } else
+            {
+                buttons[i].setOn(true);
             }
         }
-        
-        return hasPersonGettingOff;
-    }
-    
-    public Person removePerson(int floor)
-    {
-        Person personRemoved = null;
-        
-        for (Person person : people)
-        {
-            if (person.getStopFloor() == floor)
-            {
-                personRemoved = person;
-                people.remove(person);
-                // Not good practice but it works :)
-                break;
-            }
-        }
-        
-        return personRemoved;
-    }
-    
-    public ArrayList<Person> removePeople(int floor)
-    {
-        boolean stillRemoving = true;
-        ArrayList<Person> peopleRemoved = new ArrayList<>();
-        
-        while (hasPersonGettingOff(floor))
-        {
-            peopleRemoved.add(removePerson(floor));
-        }
-        
-        return peopleRemoved;
-    }
-    
-    
-    // Utilize this...
-    public boolean isFull()
-    {
-        return people.size() == capacity;
-    }
-    
-    public boolean isEmpty()
-    {
-        return people.isEmpty();
     }
     
     public int getCurrentFloor()
     {
-        return currentFloor;
+        return this.currentFloor;
     }
-    
-    public void setCurrentFloor(int currentFloor)
+
+    public void setCurrentFloor(int a)
     {
-        this.currentFloor = currentFloor;
+        this.currentFloor = a;
     }
     
     public void elevate()
     {
-        // Will need to put in an if to make sure its valid
-        currentFloor++;
+        if (this.currentFloor < Config.maxFloor - 1)
+        {
+            this.currentFloor++;
+        }
+
     }
-    
     public void descend()
     {
-        // Will need to put in an if to make sure its valid
-        currentFloor--;
+        if (this.currentFloor > 0)
+        {
+            this.currentFloor--;
+        }
     }
     
-    // Probably going to remove these two functions
-    // they are useful for testing for now...
     public boolean peopleGoingUp()
     {
         boolean peopleGoingUp = false;
-        
-        for (int person = 0; person < people.size(); person++)
+        for (int i = this.currentFloor; i < Config.maxFloor; i++)
         {
-            if (people.get(person).isGoingUp())
+            if (buttons[i].isOn())
             {
                 peopleGoingUp = true;
             }
         }
-        
         return peopleGoingUp;
     }
-    
+
     public boolean peopleGoingDown()
     {
         boolean peopleGoingDown = false;
-        
-        for (int person = 0; person < people.size(); person++)
+        for (int i = this.currentFloor; i >= 0; i--)
         {
-            if (people.get(person).isGoingDown())
+            if (buttons[i].isOn())
             {
                 peopleGoingDown = true;
             }
         }
-        
         return peopleGoingDown;
     }
-    
-    // Adding this method for testing elevator controller
-    public ArrayList<Person> getPeople()
+
+    public void setCapacity(int capacity)
     {
-        return people;
+        this.capacity = capacity;
+    }
+
+    public int getCapacity()
+    {
+        return this.capacity;
     }
     
-    public int getNumberOfOccupants()
+    public boolean isFull()
     {
-        return numberOfOccupants;
+        boolean isFull = false;
+        
+        if (capacity <= numberOfPeople)
+        {
+            isFull = true;
+        }
+        return isFull;
+    }
+
+    public boolean isEmpty()
+    {
+        boolean isEmpty = true;
+        if (numberOfPeople > 0)
+        {
+            isEmpty = false;
+        }
+        return isEmpty;
+    }
+
+    public ElevatorButton[] getButtons()
+    {
+        return buttons;
+    }
+
+    public void eleToString()
+    {
+        System.out.println("***********************");
+        System.out.println("Elevator ID   " + this.id);
+        System.out.println("Current  Flr  " + this.currentFloor);
+        System.out.println("Going    Up   " + peopleGoingUp());
+        System.out.println("Going    Down " + peopleGoingDown());
+        System.out.println("# of Riders   " + this.numberOfPeople);
     }
 }

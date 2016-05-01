@@ -34,26 +34,28 @@ public class Floor
         if (person.isGoingUp())
         {
             upQueue.enqueue(person);
-            upButton.turnOn();
         }
         else
         {
             downQueue.enqueue(person);
-            downButton.turnOn();
         }
+        manageButton();
     }
     
     public Person getFromUpQueue()
     {
-        // This is the null being returned
         Person person = null;
         
-        person = upQueue.dequeue();
-
-        if (upQueue.isEmpty())
+        if (!upQueue.isEmpty())
         {
-            upButton.turnOff();
+            person = upQueue.dequeue();
         }
+        else
+        {
+            // Do nothing
+        }
+        
+        manageButton();
         
         return person;
     }
@@ -62,44 +64,41 @@ public class Floor
     {
         Person person = null;
         
-        if (downIsOn())
+        if (!downQueue.isEmpty())
         {
             person = downQueue.dequeue();
-            
-            if (downQueue.isEmpty())
-            {
-                downButton.turnOff();
-            }
         }
+        else
+        {
+            // Do nothing
+        }
+        
+        manageButton();
         
         return person;
     }
     
-    public boolean upIsOn()
+    public void manageButton()
     {
-        return upButton.isOn();
-    }
-    
-    public boolean downIsOn()
-    {
-        return downButton.isOn();
-    }
-    
-    public int getFloorNumber()
-    {
-        return floorNumber;
-    }
-    
-    public boolean isEmpty()
-    {
-        boolean isEmpty = false;
-        
-        if (upQueue.isEmpty() && downQueue.isEmpty())
+        // Handle upButton
+        if (upQueue.isEmpty())
         {
-            isEmpty = true;
+            upButton.setOn(false);
+        }
+        else
+        {
+            upButton.setOn(true);
         }
         
-        return isEmpty;
+        // Handle downButton
+        if (downQueue.isEmpty())
+        {
+            downButton.setOn(false);
+        }
+        else
+        {
+            downButton.setOn(true);
+        }
     }
     
     public FloorQueue getUpQueue()
@@ -111,20 +110,14 @@ public class Floor
     {
         return downQueue;
     }
-    
-    public void addToUpQueue(Person person)
+
+    public int getFloorNumber()
     {
-        upQueue.enqueue(person);
-        upButton.turnOn();
+        return floorNumber;
     }
-    
-    public void addToDownQueue(Person person)
+
+    public void setFloorNumber(int floorNumber)
     {
-        // implement this function
-    }
-    
-    public int numberOfPeople()
-    {
-        return upQueue.getPersonCount() + downQueue.getPersonCount();
+        this.floorNumber = floorNumber;
     }
 }

@@ -17,40 +17,42 @@ public class FloorTest
         
         // You will start at top floor and get off at top
         Person you = new Person(Config.maxFloor - 1, 0);
-        
-        // Test if anyone is in the queues
-        if (!floor.upIsOn() && !floor.downIsOn())
+
+        if (floor.getUpQueue().isEmpty() && floor.getDownQueue().isEmpty())
         {
-            System.out.println("Test: Initially empty - Pass");
+            System.out.println("Initially empty -> Pass");
         }
         else
         {
-            System.out.println("Test: Initially empty - Fail");
+            System.out.println("Initially empty -> Fail");
         }
-
+        
         // Add people to the floor queues and test that they were added
         floor.addPerson(me);
         floor.addPerson(you);
         
-        if (floor.upIsOn() && floor.downIsOn())
+        if (!floor.getUpQueue().isEmpty() && !floor.getDownQueue().isEmpty())
         {
-            System.out.println("Test: Added to both queues - Pass");
+            System.out.println("Filled -> Pass");
         }
         else
         {
-            System.out.println("Test: Added to both queues - Fail");
+            System.out.println("Filled -> Fail");
         }
+
         
         // Remove people from the floor queues and test that they were removed
         floor.getFromUpQueue();
         floor.getFromDownQueue();
-        if (!floor.upIsOn() && !floor.downIsOn())
+        
+        if (floor.getUpQueue().isEmpty() && floor.getDownQueue().isEmpty())
         {
-            System.out.println("Test: Remove from both queues - Pass");
+            System.out.println("Empty -> Pass");
         }
         else
         {
-            System.out.println("Test: Remove from both queues - Fail");
+            System.out.println("Empty -> Fail");
         }
+
     }
 }

@@ -11,11 +11,11 @@ public class ElevatorController
 
     public ElevatorController() {}
     
-    public void moveElevator(FloorArray floors, Elevator[] elevators)
+    public void moveElevator(FloorArray floors, Elevator2[] elevators)
     {
         ArrayList<Floor> floorArray = floors.getFloors();
 
-        for (Elevator elevator : elevators)
+        for (Elevator2 elevator : elevators)
         {
             int floorCount = 0;
             
@@ -35,11 +35,11 @@ public class ElevatorController
         }
     }
     
-    public void moveElevatorUp(FloorArray floors, Elevator[] elevators, int currentFloor)
+    public void moveElevatorUp(FloorArray floors, Elevator2[] elevators, int currentFloor)
     {
         Floor floor = floors.getFloor(currentFloor);
         
-        while (!floor.getUpQueue().isEmpty())
+        while (!floor.getUpQueue().isEmpty() && elevators[0].getNumberOfOccupants() < Config.numberOfPeople)
         {
             if ( elevators[0].getNumberOfOccupants() < Config.numberOfPeople )
             {
@@ -55,11 +55,11 @@ public class ElevatorController
         }
     }
     
-    public void moveElevatorDown(FloorArray floors, Elevator[] elevators, int currentFloor)
+    public void moveElevatorDown(FloorArray floors, Elevator2[] elevators, int currentFloor)
     {
         Floor floor = floors.getFloor(currentFloor);
         
-        while (!floor.getDownQueue().isEmpty())
+        while (!floor.getDownQueue().isEmpty() && elevators[0].getNumberOfOccupants() < Config.numberOfPeople)
         {
             if ( elevators[0].getNumberOfOccupants() < Config.elevatorCapacity )
             {

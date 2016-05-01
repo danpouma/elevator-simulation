@@ -7,7 +7,7 @@ package elevator;
  */
 public class ElevatorButton
 {
-    public boolean isOn;
+    private boolean isOn;
     private String label;
     
     public ElevatorButton()
@@ -22,25 +22,14 @@ public class ElevatorButton
         this.isOn = false;
     }
     
-    public void turnOn()
+    public void setOn(boolean isOn)
     {
-        this.isOn = true;
+        this.isOn = isOn;
     }
-    
-    public void turnOff()
-    {
-        this.isOn = false;
-    }
-    
     
     public boolean isOn()
     {
-        return this.isOn;
-    }
-    
-    public boolean isOff()
-    {
-        return this.isOn;
+        return isOn;
     }
     
     public void setLabel(String label)

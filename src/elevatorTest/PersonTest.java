@@ -9,43 +9,33 @@ import elevator.Person;
  */
 public class PersonTest
 {
+
     public static void main(String[] args)
-    {   
-        Person[] people = new Person[2];
-        
-        for (int i = 0; i < 2; i++)
+    {
+        Person person = new Person();
+    
+        person.setStartFloor(0);
+        person.setStopFloor(2);
+
+        if (person.isGoingUp())
         {
-            people[i] = new Person();
-            people[i].setStartFloor(1);
-            System.out.println("Start floor: " + people[i].getStartFloor());
-
-            people[i].setStopFloor(6);
-            System.out.println("Stop floor: " + people[i].getStopFloor());
-
-            System.out.println("ID: " + people[i].getId());
-            
-            System.out.print("Is going up...");
-            if (people[i].isGoingUp())
-            {
-                System.out.println("Yes");
-            }
-            else
-            {
-                System.out.println("No");
-            }
-            
-            System.out.print("Is going down...");
-            if (people[i].isGoingDown())
-            {
-                System.out.println("Yes");
-            }
-            else
-            {
-                System.out.println("No");
-            }
-            
-            // Clean output
-            System.out.println("***************");
+            System.out.println("Person going up-PASS");
+        }
+        else
+        {
+            System.out.println("Person going up-FAIL");
+        }
+        
+        person.setStartFloor(2);
+        person.setStopFloor(1);
+        
+        if (!person.isGoingUp())
+        {
+            System.out.println("Person going down-PASS");
+        }
+        else
+        {
+            System.out.println("Person going down-FAIL");
         }
     }
 }

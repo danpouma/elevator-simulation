@@ -15,5 +15,7 @@ public class ClockTest
         Thread timer = new Thread(clock);
         
         timer.start();
+      
+       
     }
 }

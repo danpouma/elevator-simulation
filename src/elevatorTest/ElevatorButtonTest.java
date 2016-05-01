@@ -12,20 +12,18 @@ public class ElevatorButtonTest
 {
     public static void main(String[] args)
     {
-        ElevatorButton button = new ElevatorButton();
+        ElevatorButton elevatorButton = new ElevatorButton();            
+        elevatorButton.setOn(true);
         
-        System.out.println("Default label " + button.getLabel());
-        button.setLabel("Test Label");
-        System.out.println("Set label " + button.getLabel());
-        System.out.print("Is on... ");
-        if (button.isOn())
+        if (!elevatorButton.isOn())
         {
-            System.out.println("Yes");
+            System.out.print("setActive(active) - FAIL\n");
         }
-        else
-        {
-            System.out.println("No");
-        }
-    }
+        elevatorButton.setOn(false);
         
+        if (elevatorButton.isOn())
+        {
+            System.out.print("setActive(deactive) - FAIL\n");
+        }    
+    }    
 }

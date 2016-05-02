@@ -1,7 +1,7 @@
 package elevatorTest;
 
 import elevator.Config;
-import elevator.Elevator2;
+import elevator.Elevator;
 import elevator.ElevatorController;
 import elevator.FloorArray;
 import elevator.PeopleGenerator;
@@ -28,16 +28,18 @@ public class ElevatorControllerTest
             }
         }
         
-        Elevator2[] elevators = new Elevator2[1];
+        Elevator[] elevators = new Elevator[1];
         
         // Was this the null pointer?
-        elevators[0] = new Elevator2();
+        elevators[0] = new Elevator();
         
-        System.out.println(elevators[0].getNumberOfOccupants());
-        elevatorController.moveElevator(floors, elevators);
-        System.out.println(elevators[0].getNumberOfOccupants());
+        System.out.println(elevators[0].getNumberOfPeople());
         
-        if (Config.numberOfPeople*Config.maxFloor == elevators[0].getNumberOfOccupants())
+        elevatorController.elevatorGetUpQueue(floors, elevators, 0);
+        
+        System.out.println(elevators[0].getNumberOfPeople());
+        
+        if (Config.numberOfPeople*Config.maxFloor == elevators[0].getNumberOfPeople())
         {
             System.out.println("pass");
         }

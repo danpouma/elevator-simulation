@@ -1,6 +1,7 @@
 package elevator;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -62,6 +63,29 @@ public class Building
     // Fill this eventually.
     public void moveElevtors()
     {
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            int currentFloor = elevators[0].getCurrentFloor();
+            
+            FloorQueue upQueue = floors.getFloor(floor).getUpQueue();
+            
+            System.out.println("Size: " + upQueue.getSize());
+            
+            for (int person = 0; person < upQueue.getSize(); person++ )
+            {
+                elevatorController.elevatorGetUpQueue(floors, elevators, currentFloor);
+            }
+
+            elevators[0].elevate();
+        }
+        
+
+        LinkedList<Person>[] destinations = elevators[0].getDesitnations();
+
+        for (LinkedList<Person> dest : destinations)
+        {
+            System.out.println(dest.size());
+        }
         
     }
 }

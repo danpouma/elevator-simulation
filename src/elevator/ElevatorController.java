@@ -1,6 +1,6 @@
 package elevator;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -8,70 +8,43 @@ import java.util.ArrayList;
  */
 public class ElevatorController
 {
-
+    // Empty default contructor
     public ElevatorController() {}
     
-    public void moveElevator(FloorArray floors, Elevator2[] elevators)
+    
+    public void elevatorGetUpQueue(FloorArray floors, Elevator[] elevators, int currentFloor)
     {
-        ArrayList<Floor> floorArray = floors.getFloors();
+        Floor floor = floors.getFloor(currentFloor);
 
-        for (Elevator2 elevator : elevators)
+        if ( elevators[0].getNumberOfPeople() < Config.elevatorCapacity )
         {
-            int floorCount = 0;
-            
-            for (Floor floor : floorArray)
-            {
-                elevator.removePeople(floorCount);
-                
-                while (!floor.getUpQueue().isEmpty())
-                {
-                    Person personFromUpQueue = floor.getFromUpQueue();
+            Person personFromUpQueue = floor.getFromUpQueue();
 
-                    elevator.addPerson(personFromUpQueue);
-                }
-                
-                floorCount++;
-            }
+            LinkedList<Person> people = elevators[0].getDesitnations()[currentFloor]; 
+
+            people.add(personFromUpQueue);
         }
+        else
+        {
+            // Do nothing
+        }   
     }
     
-    public void moveElevatorUp(FloorArray floors, Elevator2[] elevators, int currentFloor)
+    public void elevatorGetDownQueue(FloorArray floors, Elevator[] elevators, int currentFloor)
     {
         Floor floor = floors.getFloor(currentFloor);
         
-        while (!floor.getUpQueue().isEmpty() && elevators[0].getNumberOfOccupants() < Config.numberOfPeople)
+        if ( elevators[0].getNumberOfPeople()< Config.elevatorCapacity )
         {
-            if ( elevators[0].getNumberOfOccupants() < Config.numberOfPeople )
-            {
-                Person personFromUpQueue = floor.getFromUpQueue();
+            Person personFromDownQueue = floor.getFromDownQueue();
             
-                elevators[0].addPerson(personFromUpQueue);
-            }
-            else
-            {
-                // Do nothing
-            }
-            
-        }
-    }
-    
-    public void moveElevatorDown(FloorArray floors, Elevator2[] elevators, int currentFloor)
-    {
-        Floor floor = floors.getFloor(currentFloor);
+            LinkedList<Person> people = elevators[0].getDesitnations()[currentFloor]; 
         
-        while (!floor.getDownQueue().isEmpty() && elevators[0].getNumberOfOccupants() < Config.numberOfPeople)
+            people.add(personFromDownQueue);
+        }
+        else
         {
-            if ( elevators[0].getNumberOfOccupants() < Config.elevatorCapacity )
-            {
-                Person personFromDownQueue = floor.getFromDownQueue();
-            
-                elevators[0].addPerson(personFromDownQueue);
-            }
-            else
-            {
-                // Do nothing
-            }
-            
+            // Do nothing
         }
     }
 }

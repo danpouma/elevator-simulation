@@ -22,7 +22,7 @@ public class Simulation
         {
             for (int person = 0; person < Config.numberOfPeople; person++)
             {
-                building.addPerson(peopleGen.generatePerson(), floor);
+                building.getFloors().getFloor(floor).addPerson(peopleGen.generatePerson());
             }            
         }
     }
@@ -34,17 +34,20 @@ public class Simulation
     
     public int numberOfPeople()
     {
-        return building.getNumberOfPeople();
-    }
-    
-    public void moveElevatorUp()
-    {
-        building.moveElevator(Config.UP);   
-    }
-    
-    public void moveElevatorDown()
-    {
-        building.moveElevator(Config.DOWN);
+        int numberOfPeople = 0;
         
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            Floor currentFloor = building.getFloors().getFloor(floor);
+            
+            numberOfPeople += currentFloor.numberOfPeopleOnFloor();
+        }
+        
+        return numberOfPeople;
+    }
+    
+    public void moveElevator()
+    {
+        building.moveElevtors();
     }
 }

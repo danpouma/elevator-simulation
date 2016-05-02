@@ -38,7 +38,6 @@ public class Elevator
     {
         try
         {
-
             destinations[person.getStopFloor()].add(person);
             numberOfPeople++;
             
@@ -152,7 +151,7 @@ public class Elevator
     {
         boolean isFull = false;
         
-        if (capacity <= numberOfPeople)
+        if (capacity == numberOfPeople)
         {
             isFull = true;
         }
@@ -168,10 +167,20 @@ public class Elevator
         }
         return isEmpty;
     }
+    
+    public int getNumberOfPeople()
+    {
+        return numberOfPeople;
+    }
 
     public ElevatorButton[] getButtons()
     {
         return buttons;
+    }
+    
+    public LinkedList<Person>[] getDesitnations()
+    {
+        return destinations;
     }
 
     public void eleToString()

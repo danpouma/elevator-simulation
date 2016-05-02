@@ -71,16 +71,7 @@ public class ConfigGUI2 extends JFrame {
                 //while (sim.numberOfPeople() != 0)
                 //{
                
-                    for (int floor = 0; floor < Config.maxFloor-1; floor++)
-                    {
-                        sim.getBuilding().addCurrentFloorToElevator(Config.UP);
-                    }
-
-
-                    for (int floor = 0; floor < Config.maxFloor-1; floor++)
-                    {
-                        sim.getBuilding().addCurrentFloorToElevator(Config.DOWN);
-                    }
+           
                 
                 
                 

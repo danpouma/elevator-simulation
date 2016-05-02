@@ -42,7 +42,7 @@ public class FloorArrayTest
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
             Floor currentFloor = floors.getFloor(floor);
-            if (!currentFloor.upIsOn() && !currentFloor.downIsOn())
+            if (currentFloor.getUpQueue().isEmpty() || currentFloor.getDownQueue().isEmpty())
             {
                 foundEmptyQueue = true;
             }
@@ -68,7 +68,7 @@ public class FloorArrayTest
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
             Floor currentFloor = floors.getFloor(floor);
-            if (!currentFloor.upIsOn() && !currentFloor.downIsOn())
+            if (currentFloor.getUpQueue().isEmpty() && currentFloor.getDownQueue().isEmpty())
             {
                 emptyQueueFound = true;
             }

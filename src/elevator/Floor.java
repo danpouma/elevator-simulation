@@ -120,4 +120,9 @@ public class Floor
     {
         this.floorNumber = floorNumber;
     }
+    
+    public int numberOfPeopleOnFloor()
+    {
+        return upQueue.getSize() + downQueue.getSize();
+    }
 }

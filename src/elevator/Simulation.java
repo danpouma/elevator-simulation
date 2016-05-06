@@ -48,6 +48,6 @@ public class Simulation
     
     public void moveElevator()
     {
-        building.moveElevtors();
+        building.moveElevators();
     }
 }

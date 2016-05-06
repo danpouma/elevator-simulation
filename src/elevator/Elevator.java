@@ -66,6 +66,7 @@ public class Elevator
         if (person != null)
         {
             person.setStopTime(Clock.getTicks());
+            // do data logging here
         }
 
         return person;
@@ -182,7 +183,7 @@ public class Elevator
     {
         return destinations;
     }
-
+    
     public void eleToString()
     {
         System.out.println("***********************");

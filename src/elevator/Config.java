@@ -18,7 +18,7 @@ public class Config
     
     public static int numberOfPeople = 30;
     
-    public static int assentType = 0;
+    public static int assentType = 2;
     
     public static void setMaxFloor(int maxFloor)
     {

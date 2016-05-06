@@ -3,9 +3,15 @@ package elevator;
 /*
 TODO:
 -Make different types of generators
+
+
+
+// nextInt is normally exclusive of the top value,
+// so add 1 to make it inclusive
+
 */
-import java.util.Random;
 import java.util.Stack;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -29,9 +35,6 @@ public class PeopleGenerator
     {
         Person person = null;
         
-        Random randGen = new Random(System.currentTimeMillis());
-        // create person who will ascend from floor 0 to top floor
-        
         // Bottom to up
         if (Config.assentType == 0)
         {
@@ -51,8 +54,8 @@ public class PeopleGenerator
             
             do
             {
-                randomStart = randGen.nextInt(9);
-                randomStop = randGen.nextInt(9);
+                randomStart = ThreadLocalRandom.current().nextInt(0, 9 + 1);
+                randomStop = ThreadLocalRandom.current().nextInt(0, 9 + 1);
                 
                 if (randomStart != randomStop)
                 {
@@ -70,7 +73,6 @@ public class PeopleGenerator
         {
             // Do nothing
         }
-        
         
         return person;
     }

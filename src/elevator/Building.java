@@ -1,7 +1,7 @@
 package elevator;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  *
@@ -26,7 +26,7 @@ public class Building
     }
     
     // Building generated with people
-    public Building(ArrayList<Person> people)
+    public Building(Stack<Person> people)
     {
         elevators = new Elevator[Config.numberOfElevators];
         for (int elevator = 0; elevator < Config.numberOfElevators; elevator++)
@@ -61,19 +61,23 @@ public class Building
     }
     
     // Fill this eventually.
-    public void moveElevtors()
+    public void moveElevators()
     {
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
             int currentFloor = elevators[0].getCurrentFloor();
             
             FloorQueue upQueue = floors.getFloor(floor).getUpQueue();
-            
-            System.out.println("Size: " + upQueue.getSize());
+            FloorQueue downQueue = floors.getFloor(floor).getDownQueue();
             
             for (int person = 0; person < upQueue.getSize(); person++ )
             {
                 elevatorController.elevatorGetUpQueue(floors, elevators, currentFloor);
+            }
+            
+            for (int person = 0; person < downQueue.getSize(); person++)
+            {
+                elevatorController.elevatorGetDownQueue(floors, elevators, currentFloor);
             }
 
             elevators[0].elevate();
@@ -84,7 +88,7 @@ public class Building
 
         for (LinkedList<Person> dest : destinations)
         {
-            System.out.println(dest.size());
+            //System.out.println(dest.size());
         }
         
     }

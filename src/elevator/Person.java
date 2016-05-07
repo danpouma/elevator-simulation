@@ -108,6 +108,7 @@ public class Person
         {
             // Do nothing
         }
+        
         return isGoingUp;
     }
 

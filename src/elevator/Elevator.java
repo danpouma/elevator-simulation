@@ -3,17 +3,18 @@ package elevator;
 import java.util.LinkedList;
 
 /**
- * 
+ *
  * @author dpoumakis
  */
 public class Elevator
 {
+
     private int capacity;
-    private int currentFloor;   
+    private int currentFloor;
     private int numberOfPeople;
     private ElevatorButton[] buttons;
     private LinkedList<Person>[] destinations;
-    
+
     // Elevator id
     private final int id;
     private static int idGenerator = 0;
@@ -28,36 +29,37 @@ public class Elevator
         destinations = new LinkedList[Config.maxFloor];
         for (int i = 0; i < Config.maxFloor; i++)
         {
-            destinations[i] = new LinkedList<Person>();
+            destinations[i] = new LinkedList<>();
             buttons[i] = new ElevatorButton(i + "");
-        }        
+        }
         manageButtons();
     }
-    
+
     public void addPerson(Person person)
     {
         try
         {
             destinations[person.getStopFloor()].add(person);
             numberOfPeople++;
-            
-        } catch (Exception e)
+
+        }
+        catch (Exception e)
         {
             System.out.println("Error in adding person");
         }
         manageButtons();
     }
-    
+
     public Person removePerson()
     {
         Person person = null;
-        
+
         try
         {
             person = destinations[currentFloor].removeLast();
             numberOfPeople--;
 
-        } 
+        }
         catch (Exception e)
         {
             System.out.println("error in removing person");
@@ -71,7 +73,7 @@ public class Elevator
 
         return person;
     }
-    
+
     private void manageButtons()
     {
         for (int i = 0; i < Config.maxFloor; i++)
@@ -79,13 +81,14 @@ public class Elevator
             if (destinations[i].isEmpty())
             {
                 buttons[i].setOn(false);
-            } else
+            }
+            else
             {
                 buttons[i].setOn(true);
             }
         }
     }
-    
+
     public int getCurrentFloor()
     {
         return this.currentFloor;
@@ -95,7 +98,7 @@ public class Elevator
     {
         this.currentFloor = a;
     }
-    
+
     public void elevate()
     {
         if (this.currentFloor < Config.maxFloor - 1)
@@ -104,6 +107,7 @@ public class Elevator
         }
 
     }
+
     public void descend()
     {
         if (this.currentFloor > 0)
@@ -111,7 +115,7 @@ public class Elevator
             this.currentFloor--;
         }
     }
-    
+
     public boolean peopleGoingUp()
     {
         boolean peopleGoingUp = false;
@@ -147,12 +151,12 @@ public class Elevator
     {
         return this.capacity;
     }
-    
+
     public boolean isFull()
     {
         boolean isFull = false;
-        
-        if (capacity == numberOfPeople)
+
+        if (capacity <= numberOfPeople)
         {
             isFull = true;
         }
@@ -168,7 +172,7 @@ public class Elevator
         }
         return isEmpty;
     }
-    
+
     public int getNumberOfPeople()
     {
         return numberOfPeople;
@@ -178,12 +182,12 @@ public class Elevator
     {
         return buttons;
     }
-    
+
     public LinkedList<Person>[] getDesitnations()
     {
         return destinations;
     }
-    
+
     public void eleToString()
     {
         System.out.println("***********************");

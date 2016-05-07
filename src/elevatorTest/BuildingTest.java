@@ -18,6 +18,19 @@ public class BuildingTest
         // Create building
         Building building = new Building(peopleGen.getPeople());
         
+        FloorArray floors = building.getFloors();
+        
+        for (int floor = 0; floor < Config.maxFloor; floor++)
+        {
+            Floor currentFloor = floors.getFloor(floor);
+            
+            FloorQueue upQueue = currentFloor.getUpQueue();
+            FloorQueue downQueue = currentFloor.getDownQueue();
+            
+            System.out.print("upQueue-> " + upQueue.getSize());
+            System.out.println(" downQueue-> " + downQueue.getSize());
+        }
+        
         building.moveElevators();        
     }
 }

@@ -67,15 +67,23 @@ public class Building
             int currentFloor = elevators[0].getCurrentFloor(); 
             
             FloorQueue upQueue = floors.getFloor(currentFloor).getUpQueue();
+            FloorQueue downQueue = floors.getFloor(currentFloor).getDownQueue();
             
-            System.out.print("Before --> " + upQueue.getSize());
+            System.out.println("upQueue before --> " + upQueue.getSize());
+            System.out.println("downQueue before --> " + downQueue.getSize());
             
             while (!upQueue.isEmpty() && !elevators[0].isFull())
             {
                 elevatorController.elevatorGetUpQueue(floors, elevators);
             }
             
-            System.out.println(" After: " + upQueue.getSize());
+            while (!downQueue.isEmpty() && !elevators[0].isFull())
+            {
+                elevatorController.elevatorGetDownQueue(floors, elevators);
+            }
+            
+            System.out.println("upQueue after --> " + upQueue.getSize());
+            System.out.println("downQueue after --> " + downQueue.getSize());
             
             elevators[0].elevate();
             

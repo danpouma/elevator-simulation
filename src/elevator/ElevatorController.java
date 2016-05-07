@@ -33,16 +33,20 @@ public class ElevatorController
         }   
     }
     
-    /*
+    
     public void elevatorGetDownQueue(FloorArray floors, Elevator[] elevators)
     {
+        int currentFloor = elevators[0].getCurrentFloor();
+        
         Floor floor = floors.getFloor(currentFloor);
         
-        if ( elevators[0].getNumberOfPeople() < Config.elevatorCapacity )
+        LinkedList[] destination = elevators[0].getDesitnations();
+        
+        if ( !elevators[0].isFull() )
         {
             Person personFromDownQueue = floor.getFromDownQueue();
             
-            elevators[0].getDesitnations()[currentFloor].add(personFromDownQueue);
+            destination[currentFloor].add(personFromDownQueue);
         }
         else
         {
@@ -50,5 +54,4 @@ public class ElevatorController
             // Do nothing
         }
     }
-    */
 }

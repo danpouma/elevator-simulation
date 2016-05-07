@@ -14,11 +14,11 @@ public class Config
     
     public static int numberOfElevators = 1;
     
-    public static int elevatorCapacity = 10;
+    public static int elevatorCapacity = 30;
     
-    public static int numberOfPeople = 30;
+    public static int numberOfPeople = 50;
     
-    public static int assentType = 2;
+    public static int assentType = 0;
     
     public static void setMaxFloor(int maxFloor)
     {

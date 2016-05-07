@@ -67,6 +67,8 @@ public class PeopleGenerator
                 }
             } while (!valid);
             
+            System.out.print("Start-> " + randomStart);
+            System.out.println(" Stop-> " + randomStop);
             person = new Person(randomStart, randomStop);
         }
         else

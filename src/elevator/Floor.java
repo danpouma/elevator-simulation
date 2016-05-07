@@ -52,6 +52,7 @@ public class Floor
         }
         else
         {
+            System.out.println("did nothing");
             // Do nothing
         }
         

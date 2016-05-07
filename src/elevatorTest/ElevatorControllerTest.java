@@ -35,7 +35,7 @@ public class ElevatorControllerTest
         
         System.out.println(elevators[0].getNumberOfPeople());
         
-        elevatorController.elevatorGetUpQueue(floors, elevators, 0);
+        elevatorController.elevatorGetUpQueue(floors, elevators);
         
         System.out.println(elevators[0].getNumberOfPeople());
         

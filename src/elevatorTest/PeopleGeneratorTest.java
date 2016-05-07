@@ -11,6 +11,8 @@ public class PeopleGeneratorTest
 {
     public static void main(String[] args)
     {
+        Config.assentType = 1;
+        
         PeopleGenerator peopleGen = new PeopleGenerator();
         
         Stack<Person> people = new Stack<>();

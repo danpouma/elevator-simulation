@@ -1,6 +1,5 @@
 package elevator;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -64,20 +63,38 @@ public class Building
     public void moveElevators()
     {
         for (int floor = 0; floor < Config.maxFloor; floor++)
+        {   
+            int currentFloor = elevators[0].getCurrentFloor(); 
+            
+            FloorQueue upQueue = floors.getFloor(currentFloor).getUpQueue();
+            
+            System.out.print("Before --> " + upQueue.getSize());
+            
+            while (!upQueue.isEmpty() && !elevators[0].isFull())
+            {
+                elevatorController.elevatorGetUpQueue(floors, elevators);
+            }
+            
+            System.out.println(" After: " + upQueue.getSize());
+            
+            elevators[0].elevate();
+            
+        }
+        
+        
+        
+        /*
+        for (int floor = 0; floor < Config.maxFloor; floor++)
         {
             int currentFloor = elevators[0].getCurrentFloor();
             
             FloorQueue upQueue = floors.getFloor(floor).getUpQueue();
-            FloorQueue downQueue = floors.getFloor(floor).getDownQueue();
+            
+            System.out.println("upQueue size: " + upQueue.getSize());
             
             for (int person = 0; person < upQueue.getSize(); person++ )
             {
                 elevatorController.elevatorGetUpQueue(floors, elevators, currentFloor);
-            }
-            
-            for (int person = 0; person < downQueue.getSize(); person++)
-            {
-                elevatorController.elevatorGetDownQueue(floors, elevators, currentFloor);
             }
 
             elevators[0].elevate();
@@ -90,6 +107,7 @@ public class Building
         {
             //System.out.println(dest.size());
         }
+                */
         
     }
 }

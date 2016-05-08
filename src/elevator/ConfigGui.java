@@ -297,7 +297,10 @@ public class ConfigGui
                 frame.setVisible(true);
                 
                 // Pass sim type 0, use config eventually
-                //Simulation simulation = new Simulation(0);
+                Simulation simulation = new Simulation();
+                System.out.println("Number of people at start: " + simulation.numberOfPeople());
+                simulation.moveElevator();
+                System.out.println("Number of people at end: " + simulation.numberOfPeople());
                 //msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
                 
                 // Maybe make this a message saying if the 

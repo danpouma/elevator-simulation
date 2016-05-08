@@ -6,12 +6,13 @@ package elevator;
  */
 public class Floor
 {
+
     private int floorNumber;
     private FloorQueue upQueue;
     private FloorQueue downQueue;
     private ElevatorButton upButton;
     private ElevatorButton downButton;
-    
+
     public Floor()
     {
         upQueue = new FloorQueue();
@@ -19,7 +20,7 @@ public class Floor
         upButton = new ElevatorButton("Up");
         downButton = new ElevatorButton("Down");
     }
-    
+
     public Floor(int floorNumber)
     {
         this.floorNumber = floorNumber;
@@ -28,7 +29,7 @@ public class Floor
         upButton = new ElevatorButton("Up");
         downButton = new ElevatorButton("Down");
     }
-    
+
     public void addPerson(Person person)
     {
         if (person.isGoingUp())
@@ -41,11 +42,11 @@ public class Floor
         }
         manageButton();
     }
-    
+
     public Person getFromUpQueue()
     {
         Person person = null;
-        
+
         if (!upQueue.isEmpty())
         {
             person = upQueue.dequeue();
@@ -54,16 +55,16 @@ public class Floor
         {
             // Do nothing
         }
-        
+
         manageButton();
-        
+
         return person;
     }
-    
+
     public Person getFromDownQueue()
     {
         Person person = null;
-        
+
         if (!downQueue.isEmpty())
         {
             person = downQueue.dequeue();
@@ -72,12 +73,12 @@ public class Floor
         {
             // Do nothing
         }
-        
+
         manageButton();
-        
+
         return person;
     }
-    
+
     public void manageButton()
     {
         // Handle upButton
@@ -89,7 +90,7 @@ public class Floor
         {
             upButton.setOn(true);
         }
-        
+
         // Handle downButton
         if (downQueue.isEmpty())
         {
@@ -100,12 +101,12 @@ public class Floor
             downButton.setOn(true);
         }
     }
-    
+
     public FloorQueue getUpQueue()
     {
         return upQueue;
     }
-    
+
     public FloorQueue getDownQueue()
     {
         return downQueue;
@@ -120,9 +121,41 @@ public class Floor
     {
         this.floorNumber = floorNumber;
     }
-    
+
     public int numberOfPeopleOnFloor()
     {
         return upQueue.getSize() + downQueue.getSize();
+    }
+
+    public boolean hasRidersGoingUp()
+    {
+        boolean retBool = false;
+        if (upButton.isOn())
+        {
+            retBool = true;
+        }
+        manageButton();
+        return retBool;
+    }
+
+    public boolean hasRidersGoingDown()
+    {
+        boolean retBool = false;
+        if (downButton.isOn())
+        {
+            retBool = true;
+        }
+        manageButton();
+        return retBool;
+    }
+    
+    public boolean upButtonIsOn()
+    {
+        return upButton.isOn();
+    }
+    
+    public boolean downButtonIsOn()
+    {
+        return downButton.isOn();
     }
 }

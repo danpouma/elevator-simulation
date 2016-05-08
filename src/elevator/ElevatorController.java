@@ -24,7 +24,8 @@ public class ElevatorController
         {
             Person personFromUpQueue = floor.getFromUpQueue();
             
-            destination[currentFloor].add(personFromUpQueue);
+            elevators[0].addPerson(personFromUpQueue);
+            //destination[currentFloor].add(personFromUpQueue);
         }
         else
         {
@@ -46,12 +47,18 @@ public class ElevatorController
         {
             Person personFromDownQueue = floor.getFromDownQueue();
             
-            destination[currentFloor].add(personFromDownQueue);
+            elevators[0].addPerson(personFromDownQueue);
+            //destination[currentFloor].add(personFromDownQueue);
         }
         else
         {
             System.out.println("full down");
             // Do nothing
         }
+    }
+    
+    public void removePeopleStopFloor(FloorArray floors, Elevator[] elevators)
+    {
+        elevators[0].removePerson();   
     }
 }

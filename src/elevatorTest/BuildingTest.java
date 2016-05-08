@@ -14,7 +14,9 @@ public class BuildingTest
         Config.setAssentType(1);
         
         PeopleGenerator peopleGen = new PeopleGenerator();
+        
         peopleGen.generatePeople();
+        
         // Create building
         Building building = new Building(peopleGen.getPeople());
         
@@ -27,7 +29,8 @@ public class BuildingTest
             FloorQueue upQueue = currentFloor.getUpQueue();
             FloorQueue downQueue = currentFloor.getDownQueue();
             
-            System.out.print("upQueue-> " + upQueue.getSize());
+            System.out.print("Floor: " + floor);
+            System.out.print(" upQueue-> " + upQueue.getSize());
             System.out.println(" downQueue-> " + downQueue.getSize());
         }
         

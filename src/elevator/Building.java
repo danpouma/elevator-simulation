@@ -63,59 +63,32 @@ public class Building
     public void moveElevators()
     {
         for (int floor = 0; floor < Config.maxFloor; floor++)
-        {   
+        {
             int currentFloor = elevators[0].getCurrentFloor(); 
-            
+
             FloorQueue upQueue = floors.getFloor(currentFloor).getUpQueue();
             FloorQueue downQueue = floors.getFloor(currentFloor).getDownQueue();
-            
-            System.out.println("upQueue before --> " + upQueue.getSize());
-            System.out.println("downQueue before --> " + downQueue.getSize());
-            
+
             while (!upQueue.isEmpty() && !elevators[0].isFull())
             {
                 elevatorController.elevatorGetUpQueue(floors, elevators);
             }
-            
+
             while (!downQueue.isEmpty() && !elevators[0].isFull())
             {
                 elevatorController.elevatorGetDownQueue(floors, elevators);
             }
-            
-            System.out.println("upQueue after --> " + upQueue.getSize());
-            System.out.println("downQueue after --> " + downQueue.getSize());
-            
-            elevators[0].elevate();
-            
-        }
-        
-        
-        
-        /*
-        for (int floor = 0; floor < Config.maxFloor; floor++)
-        {
-            int currentFloor = elevators[0].getCurrentFloor();
-            
-            FloorQueue upQueue = floors.getFloor(floor).getUpQueue();
-            
-            System.out.println("upQueue size: " + upQueue.getSize());
-            
-            for (int person = 0; person < upQueue.getSize(); person++ )
+
+            while (elevators[0].peopleGettingOff())
             {
-                elevatorController.elevatorGetUpQueue(floors, elevators, currentFloor);
-            }
-
+                elevatorController.removePeopleStopFloor(floors, elevators);
+            }  
+            
             elevators[0].elevate();
         }
         
-
-        LinkedList<Person>[] destinations = elevators[0].getDesitnations();
-
-        for (LinkedList<Person> dest : destinations)
-        {
-            //System.out.println(dest.size());
-        }
-                */
-        
+        // Reset the floor
+        elevators[0].setCurrentFloor(0);
+  
     }
 }

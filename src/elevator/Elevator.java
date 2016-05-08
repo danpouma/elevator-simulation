@@ -40,7 +40,6 @@ public class Elevator
         try
         {
             destinations[person.getStopFloor()].add(person);
-            numberOfPeople++;
 
         }
         catch (Exception e)
@@ -48,6 +47,8 @@ public class Elevator
             System.out.println("Error in adding person");
         }
         manageButtons();
+        
+        numberOfPeople++;
     }
 
     public Person removePerson()
@@ -57,8 +58,6 @@ public class Elevator
         try
         {
             person = destinations[currentFloor].removeLast();
-            numberOfPeople--;
-
         }
         catch (Exception e)
         {
@@ -68,8 +67,10 @@ public class Elevator
         if (person != null)
         {
             person.setStopTime(Clock.getTicks());
-            // do data logging here
+            //DataCollector.addPersonToList(person);   
         }
+        
+        numberOfPeople--;
 
         return person;
     }
@@ -91,7 +92,7 @@ public class Elevator
 
     public int getCurrentFloor()
     {
-        return this.currentFloor;
+        return currentFloor;
     }
 
     public void setCurrentFloor(int a)
@@ -101,9 +102,9 @@ public class Elevator
 
     public void elevate()
     {
-        if (this.currentFloor < Config.maxFloor - 1)
+        if (currentFloor < Config.maxFloor - 1)
         {
-            this.currentFloor++;
+            currentFloor++;
         }
 
     }
@@ -186,6 +187,11 @@ public class Elevator
     public LinkedList<Person>[] getDesitnations()
     {
         return destinations;
+    }
+    
+    public boolean peopleGettingOff()
+    {
+        return !destinations[currentFloor].isEmpty();
     }
 
     public void eleToString()

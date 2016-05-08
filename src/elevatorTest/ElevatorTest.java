@@ -1,7 +1,6 @@
 package elevatorTest;
 
 import elevator.*;
-import java.util.ArrayList;
 
 /**
  *

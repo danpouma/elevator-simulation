@@ -37,14 +37,14 @@ public class Clock extends Thread
             {
                 if (isTicking)
                 {
-                    Thread.sleep(1000);
+                    Thread.sleep(5);
                     tick();
                 }
             } catch (InterruptedException e)
             {
                 isTicking = false;
             }
-            System.out.println(Clock.getTicks());
+            //System.out.println(Clock.getTicks());
         }
     }
 }

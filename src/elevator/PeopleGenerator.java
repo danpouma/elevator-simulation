@@ -55,8 +55,8 @@ public class PeopleGenerator
 
             do
             {
-                randomStart = ThreadLocalRandom.current().nextInt(0, 9 + 1);
-                randomStop = ThreadLocalRandom.current().nextInt(0, 9 + 1);
+                randomStart = ThreadLocalRandom.current().nextInt(0, Config.maxFloor );
+                randomStop = ThreadLocalRandom.current().nextInt(0, Config.maxFloor);
 
                 if (randomStart != randomStop)
                 {

@@ -8,23 +8,17 @@ public class Simulation
 {
     private Building building;
     private PeopleGenerator peopleGen;
+    private Clock clock;
+    private Thread timer;
     
     public Simulation()
     {
-        building = new Building();
+        clock = new Clock();
+        timer = new Thread(clock);
+        timer.start();
         peopleGen = new PeopleGenerator();
-    }
-    
-    
-    public void generatePeople()
-    {
-        for (int floor = 0; floor < Config.maxFloor; floor++)
-        {
-            for (int person = 0; person < Config.numberOfPeople; person++)
-            {
-                building.getFloors().getFloor(floor).addPerson(peopleGen.generatePerson());
-            }            
-        }
+        peopleGen.generatePeople();
+        building = new Building(peopleGen.getPeople());
     }
     
     public Building getBuilding()
@@ -47,7 +41,20 @@ public class Simulation
     }
     
     public void moveElevator()
-    {
-        building.moveElevators();
+    {   
+        while ( numberOfPeople() > 0 )
+        {
+            building.moveElevators(); 
+            
+            try
+            {
+                // Make clock data visible
+                Thread.sleep(250);
+            }
+            catch (Exception e)
+            {
+                // Do nothing
+            }
+        }
     }
 }

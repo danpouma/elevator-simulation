@@ -242,7 +242,7 @@ public class ConfigGui
     private void showSimulation()
     {
         Frame frame = new Frame("Elevator Simulation!!!");
-        frame.setSize(400, 300);
+        frame.setSize(300, 300);
         frame.setLayout(new FlowLayout());
         
         /* Add to make the pop up frame go center */
@@ -268,13 +268,13 @@ public class ConfigGui
         msgMaxFloor.setAlignment(Label.CENTER);
         
         // Put this down in launch listener, double check them
-        msgMaxFloor.setText("Max floor--> " + Config.maxFloor);
+        //msgMaxFloor.setText("y8");
         
         msgCapacity = new Label();
         msgCapacity.setAlignment(Label.CENTER);
         
         // Put this down in launch listener, double check them
-        msgCapacity.setText("Elevator capacity --> " + Config.elevatorCapacity);
+       // msgCapacity.setText("y8");
         
         frame.add(msgMaxFloor);
         frame.add(msgCapacity);
@@ -298,9 +298,9 @@ public class ConfigGui
                 
                 // Pass sim type 0, use config eventually
                 Simulation simulation = new Simulation();
-                System.out.println("Number of people at start: " + simulation.numberOfPeople());
+                msgMaxFloor.setText("Number of people at start: " + simulation.numberOfPeople());
                 simulation.moveElevator();
-                System.out.println("Number of people at end: " + simulation.numberOfPeople());
+                msgCapacity.setText("Number of people at end: " + simulation.numberOfPeople());
                 //msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
                 
                 // Maybe make this a message saying if the 

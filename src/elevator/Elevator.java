@@ -67,7 +67,7 @@ public class Elevator
         if (person != null)
         {
             person.setStopTime(Clock.getTicks());
-            //DataCollector.addPersonToList(person);   
+            DataCollector.addPerson(person);   
         }
         
         numberOfPeople--;

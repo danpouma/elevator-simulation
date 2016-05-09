@@ -301,6 +301,7 @@ public class ConfigGui
                 msgMaxFloor.setText("Number of people at start: " + simulation.numberOfPeople());
                 simulation.moveElevator();
                 msgCapacity.setText("Number of people at end: " + simulation.numberOfPeople());
+                simulation.printResults();
                 //msgCapacity.setText("Number people after movement: " + simulation.numberOfPeople());
                 
                 // Maybe make this a message saying if the 

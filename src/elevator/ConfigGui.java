@@ -22,7 +22,7 @@ public class ConfigGui
     private TextField maxFloorLabel;
     private TextField elevatorsLabel;
     private TextField peopleLabel;
-    private TextField assentTypeLabel;
+    private TextField ascentTypeLabel;
 
     private Label statusLabel;
     private Panel controlPanel;
@@ -78,7 +78,7 @@ public class ConfigGui
     {
         maxFloorLabel = new TextField("Enter max floor of building...");
         maxFloorLabel.setSize(250, 100);
-        Button maxFloorButton = new Button("button for max floor");
+        Button maxFloorButton = new Button("Set max floor");
         maxFloorButton.setSize(10, 10);
         maxFloorButton.addActionListener(new ActionListener()
         {
@@ -106,7 +106,7 @@ public class ConfigGui
         capacityLabel = new TextField("Enter capacity of elevator...");
         //headerLabel.setAlignment(Label.CENTER);
         capacityLabel.setSize(250, 100);
-        Button capacityButton = new Button("button for capacity");
+        Button capacityButton = new Button("Set capacity");
         capacityButton.setSize(10, 10);
         capacityButton.addActionListener(new ActionListener()
         {
@@ -135,7 +135,7 @@ public class ConfigGui
         elevatorsLabel = new TextField("Enter number of elevators...");
         //headerLabel.setAlignment(Label.CENTER);
         elevatorsLabel.setSize(250, 100);
-        Button elevatorsButton = new Button("button for # of elevators");
+        Button elevatorsButton = new Button("Set # of elevators");
         elevatorsButton.setSize(10, 10);
         elevatorsButton.addActionListener(new ActionListener()
         {
@@ -164,7 +164,7 @@ public class ConfigGui
         peopleLabel = new TextField("Enter number of number...");
         //headerLabel.setAlignment(Label.CENTER);
         peopleLabel.setSize(250, 100);
-        Button peopleButton = new Button("button for # of people");
+        Button peopleButton = new Button("Set # of people");
         peopleButton.setSize(10, 10);
         peopleButton.addActionListener(new ActionListener()
         {
@@ -189,9 +189,9 @@ public class ConfigGui
     
     private void initializeAssentType()
     {
-        assentTypeLabel = new TextField("Enter assent type...");
-        assentTypeLabel.setSize(250, 100);
-        Button assentTypeButton = new Button("button for assent type");
+        ascentTypeLabel = new TextField("Enter ascent type...");
+        ascentTypeLabel.setSize(250, 100);
+        Button assentTypeButton = new Button("Set ascent type");
         assentTypeButton.setSize(10, 10);
         assentTypeButton.addActionListener(new ActionListener()
         {
@@ -199,18 +199,18 @@ public class ConfigGui
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println("assent type button pressed...");
-                System.out.println(assentTypeLabel.getText());
+                System.out.println(ascentTypeLabel.getText());
                 
                 // Will need to verify input 
-                Config.setAssentType(Integer.parseInt(assentTypeLabel.getText()));
-                System.out.println(Config.assentType);
+                Config.setAssentType(Integer.parseInt(ascentTypeLabel.getText()));
+                System.out.println(Config.ascentType);
                 // Maybe make this a message saying if the 
                 // simulation was successful or not, figure it out. 
                 //frame.setVisible(true);
             }
         });
 
-        configPanel.add(assentTypeLabel);
+        configPanel.add(ascentTypeLabel);
         configPanel.add(assentTypeButton);
     }
     

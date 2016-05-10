@@ -129,31 +129,35 @@ public class Floor
 
     public boolean hasRidersGoingUp()
     {
-        boolean retBool = false;
+        boolean hasRidersGoingUp = false;
+
         if (upButton.isOn())
         {
-            retBool = true;
+            hasRidersGoingUp = true;
         }
         manageButton();
-        return retBool;
+
+        return hasRidersGoingUp;
     }
 
     public boolean hasRidersGoingDown()
     {
-        boolean retBool = false;
+        boolean hasRidersGoingDown = false;
+
         if (downButton.isOn())
         {
-            retBool = true;
+            hasRidersGoingDown = true;
         }
         manageButton();
-        return retBool;
+
+        return hasRidersGoingDown;
     }
-    
+
     public boolean upButtonIsOn()
     {
         return upButton.isOn();
     }
-    
+
     public boolean downButtonIsOn()
     {
         return downButton.isOn();

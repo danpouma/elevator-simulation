@@ -20,7 +20,7 @@ public class SimulationTest
 
     public static void main(String[] args)
     {
-        Config.assentType = 0;
+        Config.ascentType = 0;
         Config.maxFloor = 9;
         Config.setNumberOfPeople(70);
         Config.setElevatorCapacity(15);

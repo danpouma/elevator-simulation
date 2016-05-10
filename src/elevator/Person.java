@@ -6,6 +6,7 @@ package elevator;
  */
 public class Person
 {
+
     private int startFloor;
     private int stopFloor;
     private int startTime;
@@ -99,16 +100,16 @@ public class Person
         if (stopFloor < startFloor)
         {
             isGoingUp = false;
-        } 
+        }
         else if (startFloor == stopFloor)
         {
-            // Should be getting off
+            // Handle it... Might not getting around to this
         }
         else
         {
             // Do nothing
         }
-        
+
         return isGoingUp;
     }
 
@@ -120,6 +121,6 @@ public class Person
     @Override
     public String toString()
     {
-        return "Person{" + "id=" + id + '}';
+        return "Person{" + "startFloor=" + startFloor + ", stopFloor=" + stopFloor + ", startTime=" + startTime + ", stopTime=" + stopTime + ", id=" + id + '}';
     }
 }

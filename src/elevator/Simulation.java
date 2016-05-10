@@ -52,11 +52,11 @@ public class Simulation
         while (numberOfPeople() > 0)
         {
             building.moveElevators();
-
+            
             try
             {
                 // Make clock data visible
-                Thread.sleep(250);
+                Thread.sleep(5);
             }
             catch (Exception e)
             {
@@ -72,11 +72,10 @@ public class Simulation
             dataCollector.writeOutputFile();
             
             System.out.println("Simulation Complete");
-            System.out.println("The shortest time was : " + dataCollector.calculateShortestTime());
-            System.out.println("The  longest time was : " + dataCollector.calculateLongestTime());
-            System.out.println("The   total  time was : " + dataCollector.calculateTotalTime());
-            System.out.println("The  average time was : "
-                    + dataCollector.calculateTotalTime() / Config.numberOfPeople);
+            System.out.println("Shortest time was-> " + dataCollector.calculateShortestTime());
+            System.out.println("Longest time was--> " + dataCollector.calculateLongestTime());
+            System.out.println("Total time was----> " + dataCollector.calculateTotalTime());
+            System.out.println("Average time was--> " + dataCollector.calculateTotalTime() / Config.numberOfPeople);
         }
         catch (IOException ex)
         {

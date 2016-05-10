@@ -47,7 +47,7 @@ public class Elevator
             System.out.println("Error in adding person");
         }
         manageButtons();
-        
+
         numberOfPeople++;
     }
 
@@ -67,9 +67,9 @@ public class Elevator
         if (person != null)
         {
             person.setStopTime(Clock.getTicks());
-            DataCollector.addPerson(person);   
+            DataCollector.addPerson(person);
         }
-        
+
         numberOfPeople--;
 
         return person;
@@ -95,9 +95,9 @@ public class Elevator
         return currentFloor;
     }
 
-    public void setCurrentFloor(int a)
+    public void setCurrentFloor(int currentFloor)
     {
-        this.currentFloor = a;
+        this.currentFloor = currentFloor;
     }
 
     public void elevate()
@@ -120,26 +120,30 @@ public class Elevator
     public boolean peopleGoingUp()
     {
         boolean peopleGoingUp = false;
-        for (int i = this.currentFloor; i < Config.maxFloor; i++)
+
+        for (int floor = this.currentFloor; floor < Config.maxFloor; floor++)
         {
-            if (buttons[i].isOn())
+            if (buttons[floor].isOn())
             {
                 peopleGoingUp = true;
             }
         }
+
         return peopleGoingUp;
     }
 
     public boolean peopleGoingDown()
     {
         boolean peopleGoingDown = false;
-        for (int i = this.currentFloor; i >= 0; i--)
+
+        for (int floor = this.currentFloor; floor >= 0; floor--)
         {
-            if (buttons[i].isOn())
+            if (buttons[floor].isOn())
             {
                 peopleGoingDown = true;
             }
         }
+
         return peopleGoingDown;
     }
 
@@ -161,16 +165,19 @@ public class Elevator
         {
             isFull = true;
         }
+
         return isFull;
     }
 
     public boolean isEmpty()
     {
         boolean isEmpty = true;
+
         if (numberOfPeople > 0)
         {
             isEmpty = false;
         }
+
         return isEmpty;
     }
 
@@ -188,19 +195,9 @@ public class Elevator
     {
         return destinations;
     }
-    
+
     public boolean peopleGettingOff()
     {
         return !destinations[currentFloor].isEmpty();
-    }
-
-    public void eleToString()
-    {
-        System.out.println("***********************");
-        System.out.println("Elevator ID   " + this.id);
-        System.out.println("Current  Flr  " + this.currentFloor);
-        System.out.println("Going    Up   " + peopleGoingUp());
-        System.out.println("Going    Down " + peopleGoingDown());
-        System.out.println("# of Riders   " + this.numberOfPeople);
     }
 }

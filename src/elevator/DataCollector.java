@@ -4,8 +4,6 @@ import java.util.LinkedList;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,56 +21,10 @@ public class DataCollector
         peopleFinished.add(person);
     }
 
-    public static int calculateHowManyFinished()
-    {
-        return peopleFinished.size();
-    }
-
-
-    public int calculateTotalTime()
-    {
-        int time = 0;
-        
-        for (Person person : peopleFinished)
-        {
-            time += person.getTotalTime();
-        }
-        return time;
-    }
-    
-    public int calculateShortestTime()
-    {
-        int time = Integer.MAX_VALUE;
-        
-        for (Person person : peopleFinished)
-        {
-            if (person.getTotalTime() < time)
-            {
-                time = person.getTotalTime();
-            }
-        }
-        return time;
-    }
-
-    public int calculateLongestTime()
-    {
-        int time = 0;
-        
-        for (Person person : peopleFinished)
-        {
-            if (person.getTotalTime() > time)
-            {
-                time = person.getTotalTime();
-            }
-        }
-        
-        return time;
-    }
-
     public void writeOutputFile() throws IOException
     {
         FileWriter fileWriter = null;
-        
+
         try
         {
             fileWriter = new FileWriter("./output.txt");
@@ -98,5 +50,50 @@ public class DataCollector
             }
         }
         fileWriter.close();
+    }
+
+    public static int calculateHowManyFinished()
+    {
+        return peopleFinished.size();
+    }
+
+    public int calculateTotalTime()
+    {
+        int time = 0;
+
+        for (Person person : peopleFinished)
+        {
+            time += person.getTotalTime();
+        }
+        return time;
+    }
+
+    public int calculateShortestTime()
+    {
+        int time = Integer.MAX_VALUE;
+
+        for (Person person : peopleFinished)
+        {
+            if (person.getTotalTime() < time)
+            {
+                time = person.getTotalTime();
+            }
+        }
+        return time;
+    }
+
+    public int calculateLongestTime()
+    {
+        int time = 0;
+
+        for (Person person : peopleFinished)
+        {
+            if (person.getTotalTime() > time)
+            {
+                time = person.getTotalTime();
+            }
+        }
+
+        return time;
     }
 }

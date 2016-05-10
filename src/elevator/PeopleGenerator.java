@@ -39,15 +39,15 @@ public class PeopleGenerator
         Person person = null;
 
         // Bottom to up
-        if (Config.assentType == 0)
+        if (Config.ascentType == 0)
         {
             person = new Person(0, Config.maxFloor - 1);
         } // Top to down
-        else if (Config.assentType == 1)
+        else if (Config.ascentType == 1)
         {
             person = new Person(Config.maxFloor - 1, 0);
         } // Random
-        else if (Config.assentType == 2)
+        else if (Config.ascentType == 2)
         {
             int randomStart;
             int randomStop;

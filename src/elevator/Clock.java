@@ -20,7 +20,7 @@ public class Clock extends Thread
     {
         ticks++;
     }
-    
+
     public static int getTicks()
     {
         return ticks;
@@ -40,7 +40,8 @@ public class Clock extends Thread
                     Thread.sleep(5);
                     tick();
                 }
-            } catch (InterruptedException e)
+            }
+            catch (InterruptedException e)
             {
                 isTicking = false;
             }

@@ -8,13 +8,14 @@ import java.util.Stack;
  */
 public class Building
 {
+
     private Elevator[] elevators;
     private ElevatorController elevatorController;
     private FloorArray floors;
-    
+
     // Default building
     public Building()
-    {   
+    {
         elevators = new Elevator[Config.numberOfElevators];
         for (int elevator = 0; elevator < Config.numberOfElevators; elevator++)
         {
@@ -23,7 +24,7 @@ public class Building
         elevatorController = new ElevatorController();
         floors = new FloorArray();
     }
-    
+
     // Building generated with people
     public Building(Stack<Person> people)
     {
@@ -34,37 +35,37 @@ public class Building
         }
         elevatorController = new ElevatorController();
         floors = new FloorArray();
-        
+
         for (Person person : people)
         {
             floors.getFloor(person.getStartFloor()).addPerson(person);
         }
     }
-    
+
     // Get the elevators
     public Elevator[] getElevators()
     {
         return elevators;
     }
-    
+
     // Get the floors
     public FloorArray getFloors()
     {
         return floors;
     }
-    
+
     // Get the elevator controller
     public ElevatorController getElevatorController()
     {
         return elevatorController;
     }
-    
+
     // Fill this eventually.
     public void moveElevators()
     {
         for (int floor = 0; floor < Config.maxFloor; floor++)
         {
-            int currentFloor = elevators[0].getCurrentFloor(); 
+            int currentFloor = elevators[0].getCurrentFloor();
 
             FloorQueue upQueue = floors.getFloor(currentFloor).getUpQueue();
             FloorQueue downQueue = floors.getFloor(currentFloor).getDownQueue();
@@ -82,13 +83,13 @@ public class Building
             while (elevators[0].peopleGettingOff())
             {
                 elevatorController.removePeopleStopFloor(floors, elevators);
-            }  
-            
+            }
+
             elevators[0].elevate();
         }
-        
+
         // Reset the floor
         elevators[0].setCurrentFloor(0);
-  
+
     }
 }

@@ -11,7 +11,7 @@ public class PeopleGeneratorTest
 {
     public static void main(String[] args)
     {
-        Config.assentType = 1;
+        Config.ascentType = 1;
         
         PeopleGenerator peopleGen = new PeopleGenerator();
         

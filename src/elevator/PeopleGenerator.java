@@ -1,17 +1,5 @@
 package elevator;
 
-/*
- TODO:
- -Make different types of generators
-
-
-
- // nextInt is normally exclusive of the top value,
- // so add 1 to make it inclusive
-
- */
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Stack;
 import java.util.concurrent.ThreadLocalRandom;
 

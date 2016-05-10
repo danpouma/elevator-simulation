@@ -56,7 +56,7 @@ public class Simulation
             try
             {
                 // Make clock data visible
-                Thread.sleep(5);
+                Thread.sleep(250);
             }
             catch (Exception e)
             {

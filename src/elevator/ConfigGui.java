@@ -198,7 +198,7 @@ public class ConfigGui
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                System.out.println("assent type button pressed...");
+                System.out.println("ascent type button pressed...");
                 System.out.println(ascentTypeLabel.getText());
                 
                 // Will need to verify input 
